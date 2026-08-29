@@ -1,0 +1,17 @@
+- Class: meta
+  Course: Muestreo_Unidad_II
+  Lesson: 01_Introduccion_al_Muestreo
+  Author: Zyanya Tajani Mireles Gaspar, Rafael Castillo Villalba
+  Type: Standard
+  Organization: your organization's name goes here
+  Version: 2.4.5
+
+#===================================================
+# Explicacion
+#===================================================
+- Class: text
+  Output: Se denomina muestreo al proceso por el que generamos las muestras. Una muestra es
+    una parte de la población, y se desea que la muestra sea lo más representativa posible de la 
+    población de la que procede. Esto significa que su tendencia central, variabilidad, etc., 
+    aproximarán las de la población, pero habrá cierta diferencia, que interesa sea lo menor posible.
+    
