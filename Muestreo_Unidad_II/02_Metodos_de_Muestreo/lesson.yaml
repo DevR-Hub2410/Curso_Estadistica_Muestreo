@@ -5,3 +5,54 @@
   Type: Standard
   Organization: your organization's name goes here
   Version: 2.4.5
+  
+#===================================================
+# Referencias
+# https://www.questionpro.com/blog/es/metodos-de-muestreo/
+# 
+#===================================================
+
+#===================================================
+# Explicacion
+#===================================================
+- Class: text
+  Output: El muestreo de probabilidad es una técnica de muestreo en la que los investigadores 
+    eligen muestras de una población más grande utilizando un método basado en la teoría de la 
+    probabilidad. Este es uno de los métodos de muestreo que considera a todos los miembros de la 
+    población y forma muestras basadas en un proceso fijo. Existen 4 metodos de muestreo:
+    
+
+#===================================================
+# Muestreo aleatorio simple
+#===================================================
+- Class: text
+  Output: El muestreo aleatorio simple es un método fiable de obtención de información en el que cada uno de los miembros de una 
+    población se elige al azar, simplemente por casualidad. Cada individuo tiene la misma probabilidad 
+    de ser elegido para formar parte de una muestra.
+#===================================================
+# Muestreo sistematico
+#===================================================
+- Class: text
+  Output: Los investigadores utilizan el método de muestreo sistemático para elegir los miembros de la 
+    muestra de una población a intervalos regulares.
+#===================================================
+# Muestreo estratificado
+#===================================================
+- Class: text
+  Output: El muestreo estraificado es un método en el que el investigador divide la población en grupos más pequeños que no se 
+    superponen, sino que representan a toda la población. Durante el muestreo, estos grupos pueden organizarse 
+    y luego extraer una muestra de cada grupo por separado.
+#===================================================
+# Muestreo por conglomerados
+#===================================================
+- Class: text
+  Output: El muestreo por conglomerados es un método en el que los investigadores dividen a toda la población en 
+    secciones o conglomerados que representan a una población. Los grupos se identifican e incluyen en una muestra 
+    basada en parámetros demográficos como la edad, el sexo, la ubicación, etc. Esto hace que sea muy sencillo para 
+    el creador de la encuesta obtener una inferencia efectiva a partir de la retroalimentación.
+#===================================================
+# Muestreo por conveniencia
+#===================================================
+- Class: text
+  Output: El muestreo por conveniencia método depende de la facilidad de acceso a los sujetos como una encuesta a los clientes en un centro comercial 
+  o a los transeúntes en una calle concurrida.

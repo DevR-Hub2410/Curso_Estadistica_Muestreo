@@ -5,6 +5,12 @@
   Type: Standard
   Organization: your organization's name goes here
   Version: 2.4.5
+  
+#===================================================
+# Referencias
+# https://www.questionpro.com/blog/es/que-es-una-poblacion/
+# https://www.uv.es/webgid/Inferencial/21_introduccin.html
+#===================================================
 
 #===================================================
 # Explicacion
@@ -15,3 +21,32 @@
     población de la que procede. Esto significa que su tendencia central, variabilidad, etc., 
     aproximarán las de la población, pero habrá cierta diferencia, que interesa sea lo menor posible.
     
+- Class: text
+  Output: En el muestreo existe un concepto clave que ayuda a entender el motivo de las muestras "la poblacion".
+    Una población es un conjunto completo de individuos u objetos que comparten características similares. La 
+    población puede comprender una nación o un grupo de personas u objetos con una característica común. 
+    Incluye a todo el grupo bien definido sobre el que cualquier investigación quiere extraer conclusiones.
+
+# A tomar en cuenta -------!    
+#- Class: text
+#  Output: Un concepto clave de muestreo es el de representatividad: Los procedimientos de muestreo 
+#    tienen por objeto generar muestras lo más representativas posible de las poblaciones dados los objetivos 
+#    de la investigación y las circunstancias que afectan al muestreo.
+    
+- Class: text
+  Output: Un ejemplo que explica mejor el muestro. Sea un curso con 40 estudiantes, queremos conocer la Media 
+    de las puntuaciones del curso, pero por diversas razones no tenemos acceso a todos los datos, supongamos que 
+    podemos seleccionar cinco puntuaciones aleatoriamente y obtener la Media de la muestra. Si repetimos el proceso 
+    y generamos más muestras tendremos más Medias muestrales y podremos ver cómo se distribuyen.
+    
+- Class: exact_question
+  Output: Una universidad tiene 20,000 alumnos inscritos y se seleccionan a 500 alumnos para responder una encuesta,  ¿Cual es la poblacion?
+  CorrectAnswer: 20000
+  AnswerTest: omnitest(correctVal = 20000)
+  Hint: Recuerda el concepto clave de la poblacion.
+  
+- Class: exact_question
+  Output: De la pregunta anerior ¿Cual es la muestra?
+  CorrectAnswer: 500
+  AnswerTest: omnitest(correctVal = 500)
+  Hint: Una parte de la poblacion.

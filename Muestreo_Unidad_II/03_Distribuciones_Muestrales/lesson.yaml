@@ -5,3 +5,37 @@
   Type: Standard
   Organization: your organization's name goes here
   Version: 2.4.5
+  
+#===================================================
+# Referencias
+# https://www-investopedia-com.translate.goog/terms/s/sampling-distribution.asp?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc
+# https://rpubs.com/mgsaavedraro/1209386
+#===================================================
+
+#===================================================
+# Explicacion
+#===================================================
+- Class: text
+  Output: La distribución muestral de una población determinada indica el rango de 
+    resultados posibles según sus estadísticas. Esto permite a entidades como gobiernos 
+    y empresas tomar decisiones mejor fundamentadas a partir de la información recopilada.
+#===================================================
+# Distribucion muestral de la media
+#===================================================
+- Class: text
+  Output: Este método muestra una distribución normal donde el valor central es la media de la 
+    distribución muestral. Por lo tanto, representa la media de la población total. Para llegar a 
+    este punto, el investigador debe calcular la media de cada grupo de muestra y representar gráficamente los datos individuales.
+#===================================================
+# Distribucion muestral de la proporcion
+#===================================================
+- Class: text
+  Output:  Este método consiste en seleccionar una muestra de la población total para obtener la proporción de la muestra. 
+    La media de las proporciones resultante constituye la proporción del grupo más amplio.
+#===================================================
+# Distribucion muestral de la varianza
+#===================================================
+- Class: text
+  Output: La varianza es una medida de dispersión que indica cuánto varían los valores de una muestra o población respecto a la 
+    media. Cuando calculamos la varianza muestral a partir de diferentes muestras de una población, estas varianzas muestrales siguen 
+    una distribución conocida, que nos permite hacer inferencias sobre la varianza poblacional.
