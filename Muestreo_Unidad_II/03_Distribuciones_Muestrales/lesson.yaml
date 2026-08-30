@@ -10,6 +10,7 @@
 # Referencias
 # https://www-investopedia-com.translate.goog/terms/s/sampling-distribution.asp?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc
 # https://rpubs.com/mgsaavedraro/1209386
+# https://www-6sigma-us.translate.goog/six-sigma-in-focus/sample-mean/?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc
 #===================================================
 
 #===================================================
@@ -23,9 +24,13 @@
 # Distribucion muestral de la media
 #===================================================
 - Class: text
-  Output: Este método muestra una distribución normal donde el valor central es la media de la 
+  Output: La distribucion muestral de la media muestra una distribución normal donde el valor central es la media de la 
     distribución muestral. Por lo tanto, representa la media de la población total. Para llegar a 
     este punto, el investigador debe calcular la media de cada grupo de muestra y representar gráficamente los datos individuales.
+    
+- Class: text
+  Output: La media muestral es el promedio de un conjunto de números extraídos de una población mayor. Es una herramienta fundamental en 
+    estadística que nos ayuda a comprender la tendencia central de los datos
 #===================================================
 # Distribucion muestral de la proporcion
 #===================================================

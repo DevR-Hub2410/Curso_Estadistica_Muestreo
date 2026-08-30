@@ -9,7 +9,12 @@
 #===================================================
 # Referencias
 # https://www.questionpro.com/blog/es/metodos-de-muestreo/
-# 
+# https://universidadeuropea.com/blog/tipos-de-muestreo/
+# https://www.netquest.com/blog/muestreo-probabilistico-muestreo-aleatorio-simple
+# https://www.uaaan.mx/~jmelbos/muestreo/muapu5
+# https://www.netquest.com/blog/muestreo-probabilistico-muestreo-conglomerados
+# https://www.netquest.com/blog/muestreo-por-conveniencia
+#
 #===================================================
 
 #===================================================
@@ -29,19 +34,66 @@
   Output: El muestreo aleatorio simple es un método fiable de obtención de información en el que cada uno de los miembros de una 
     población se elige al azar, simplemente por casualidad. Cada individuo tiene la misma probabilidad 
     de ser elegido para formar parte de una muestra.
+    
+- Class: text
+  Output: Para aplicar este tipo de muestreo se suele aplicar cuando tienes acceso a una poblacion completa, y que la poblacion sea 
+    homogéneas, es decir que tengan caracteristicas similares, puesto que hay que asignar un número a cada individuo. La limitante para este 
+    metodo son las poblaciones heterogeneas, ya que se corre el riesgo de crear sesgos en la muestra si no se toman en cuenta las diferencias demograficas.
+  
+- Class: text
+  Output: Sus principales ventajas de usarla es que evita sesgos, es facil de entender y aplicar, permite analisis estadistico fiables y 
+    sobre todo es transparente y replicable. Por lo que ofrece resultados solidos en las muestras pequeñas.
+    
+- Class: mult_question
+  Output: ¿Cual de las siguientes afirmaciones describe mejor el muestreo aleatorio simple?
+  AnswerChoices: Todos los elementos tienen la misma probabilidad de ser seleccionados.;Se seleccionan únicamente los elementos más accesibles.;Se selecciona un elemento de cada grupo de la población.;Se seleccionan grupos completos de individuos.
+  CorrectAnswer: Todos los elementos tienen la misma probabilidad de ser seleccionados.
+  AnswerTests: omitest(correctVal='Todos los elementos tienen la misma probabilidad de ser seleccionados.')
+  Hint: Recuerda que el metodo selecciona elementos aleatorios.
+  
+- Class: text
+  Output: Un ejemplo sobre este metodo: Una escuela tiene 500 alumnos y quieren encuestar a 50. Se numeran los 500 alumnos y se elige los 50 alumnos al azar, 
+    esos 50 alumnos forman parte de la muestra.
+    
+- Class: cmd_question
+  Output: Del ejemplo anterior. Selecciona una muestra aleatoria de 10 estudiantes utlizando el identificador id.
+  CorrectAnswer: sample(poblacion$id, 10)
+  AnswerTests: omnitest(correctExpr='sample(poblacion$id, 10)')
+  Hint: Utiliza la funcion sample(). El primer argumento es el id de poblacion.
+  
+- Class: mult_question
+  Output: De la muestra que obtuviste. Si un estudiante no fue seleccionado en esta muestra, ¿significa que tiene una menor probabilidad de ser seleccionado?
+  AnswerChoices: No, todos los estudiantes tenían la misma probabilidad de ser seleccionados.;Sí, los estudiantes no seleccionados tenían menor probabilidad.;Sí, porque sample() selecciona a los estudiantes con mejores características.;No, porque únicamente se seleccionan estudiantes de ciertos semestres.
+  AnswerTests: omnitest(correctVal='No, todos los estudiantes tenían la misma probabilidad de ser seleccionados.')
+  Hint: Recuerda que el metodo selecciona elementos aleatorios.
+  
+- Class: text
+  Output: En conclusion el muestreo aleatorio simple es una técnica fundamental para entender a grandes grupos de personas sin tener que analizarlos a todos. Su principal 
+    ventaja es la igualdad de oportunidades en la selección, lo que garantiza resultados más objetivos. Sin embargo, su correcta aplicación depende de un 
+    elemento clave: disponer de un buen listado de la población. Sin esto, incluso el mejor método puede fallar.
 #===================================================
 # Muestreo sistematico
 #===================================================
+# Investigar!
 - Class: text
-  Output: Los investigadores utilizan el método de muestreo sistemático para elegir los miembros de la 
-    muestra de una población a intervalos regulares.
+  Output: El muestreo sistemático es un tipo de método de muestreo probabilístico utilizado en la investigación para seleccionar individuos de una 
+    población objetivo a intervalos regulares.
+    
+# Link caido, corregirlo
+- Class: text
+  Output: El intervalo de seleccion, tambien conocido como intervalo de muestreo, es la distancia numérica o el salto entre los elementos que se eligen 
+    de una lista de población para armar una muestra.
 #===================================================
 # Muestreo estratificado
 #===================================================
+# Investigar!
 - Class: text
   Output: El muestreo estraificado es un método en el que el investigador divide la población en grupos más pequeños que no se 
     superponen, sino que representan a toda la población. Durante el muestreo, estos grupos pueden organizarse 
     y luego extraer una muestra de cada grupo por separado.
+    
+- Class: text
+  Output: 
 #===================================================
 # Muestreo por conglomerados
 #===================================================
@@ -50,9 +102,44 @@
     secciones o conglomerados que representan a una población. Los grupos se identifican e incluyen en una muestra 
     basada en parámetros demográficos como la edad, el sexo, la ubicación, etc. Esto hace que sea muy sencillo para 
     el creador de la encuesta obtener una inferencia efectiva a partir de la retroalimentación.
+    
+- Class: text
+  Output: Los conglomerados se refiere a la una poblacion que se devide en grupos naturales, se refiere a que los elementos de la muestra estan agrupados que 
+    muestran caracteristicas en comun, sin que el investigador tenga que armar los grupos.
+    
+- Class: text
+  Output: Para la seleccion de los conglomerados primero se identifican los conglomerados de la poblacion, si los conglomerados son evidentes, se sigue un 
+    proceso aleatorio para su selección, para luego analizar los elementos recolectados 
+    
+- Class: text
+  Output: La diferencia entre los estratos y conglomerados son en como se seleccionan los elementos de los grupos. Los estratos selecciona los individuos 
+  de cada grupo divido de la poblacion manualmente el conglomerado selecciona a varios grupos en vez de a los individuos.
+    
+- Class: text
+  Output: Un ejemplo del muestreo por conglomerados es: una empresa quiere analizar habitos de consumo, divide el pais en ciudades, selecciona ciudades al azar y 
+    estudia a los habitantes de esa ciudad.
+    
+- Class: text
+  Output: Otro ejemplo: una universidad desea conocer la opinion de sus estudiantes sobre las instalaciones. En lugar de seleccionar a estudiantes aleatoriamente 
+    optan por seleccionar aleatoriamente una carrera y asi realizar la encuesta a los estudiantes de esa carrera.
+    
 #===================================================
 # Muestreo por conveniencia
 #===================================================
 - Class: text
   Output: El muestreo por conveniencia método depende de la facilidad de acceso a los sujetos como una encuesta a los clientes en un centro comercial 
   o a los transeúntes en una calle concurrida.
+  
+- Class: text
+  Ouput: Un ejemplo de este metodo: un investigador que realiza un estudio sobre hábitos alimenticios podría seleccionar a estudiantes universitarios que 
+    se encuentran en la cafetería del campus porque son fácilmente accesibles.
+    
+- Class text
+  Output: Las principales ventajas del muestreo por convenencia son: es facil y rapido llevar a cabo, requiere menos recursos en comparacion con otros metodos de 
+    muestreo y es util para estudios preliminares y exploratorios. Sus principales Desventajas son: los resultados pueden estar sesgados debido a la falta 
+    de aleatoriedad, los hallazgos pueden no ser representativos de la poblacion total y depende de la disponibilidad de los participantes, lo que puede introducir 
+    sesgos adicionales.
+    
+- Class: text
+  Output: El muestreo por conveniencia es una forma de muestreo no probabilístico, lo que significa que no todos los individuos de la población tienen la misma 
+    probabilidad de ser seleccionados. Esto limita la capacidad de generalizar los resultados a toda la población.
