@@ -16,4 +16,10 @@ poblacion <- data.frame(
   semestre = sample(1:10, 500, replace = TRUE)
 )
 
-n <- 50
+estudiantes <- data.frame(
+  id = 1:100,
+  turno = c(
+    rep("Matutino", 70),
+    rep("Vespertino", 30)
+  )
+)

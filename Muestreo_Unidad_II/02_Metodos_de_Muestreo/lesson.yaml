@@ -115,6 +115,21 @@
   Output: La diferencia entre los estratos y conglomerados son en como se seleccionan los elementos de los grupos. Los estratos selecciona los individuos 
   de cada grupo divido de la poblacion manualmente el conglomerado selecciona a varios grupos en vez de a los individuos.
     
+- Class: mult_question
+  Output: Veamos estas situaciones. En una universidad tiene 20 grupos de estudiantes. Cada grupo tiene estudiantes que toman clases juntos. Si se seleccionan algunos grupos 
+    completos para realizar una encuesta, ¿que representan los grupos?
+  AnswerChoices: Conglomerados;Estratos;Variables;Parametros
+  CorrectAnswer: Conglomerados
+  AnswerTests: omnitest(correctVal='Conglomerados')
+  Hint: Son grupos que ya estan ordenados dentro de la poblacion.
+  
+- Class: mult_question
+  Output: ¿Cuál es la principal diferencia entre el muestreo estratificado y el muestreo por conglomerados?
+  AnswerChoices: En el estratificado se seleccionan individuos de cada grupo, mientras que en el de conglomerados se seleccionan grupos.;En el estratificado se seleccionan grupos completos, mientras que en el de conglomerados se seleccionan individuos de cada grupo.;Ambos métodos seleccionan siempre los mismos elementos.;El muestreo por conglomerados no utiliza selección aleatoria.
+  CorrectAnswer: En el estratificado se seleccionan individuos de cada grupo, mientras que en el de conglomerados se seleccionan grupos.
+  AnswerTests: omnitest(correctVal='En el estratificado se seleccionan individuos de cada grupo, mientras que en el de conglomerados se seleccionan grupos.')
+  Hint: Estratficado se selecciona un individuo y el conglomerado selecciona grupos.
+  
 - Class: text
   Output: Un ejemplo del muestreo por conglomerados es: una empresa quiere analizar habitos de consumo, divide el pais en ciudades, selecciona ciudades al azar y 
     estudia a los habitantes de esa ciudad.
@@ -123,12 +138,35 @@
   Output: Otro ejemplo: una universidad desea conocer la opinion de sus estudiantes sobre las instalaciones. En lugar de seleccionar a estudiantes aleatoriamente 
     optan por seleccionar aleatoriamente una carrera y asi realizar la encuesta a los estudiantes de esa carrera.
     
+- Class: cmd_question
+  Output: Ahora utilizaremos R para seleccionar aleatoriamente algunos conglomerados. Crea una variable llamada Escuelas donde tenga una lista de las siguientes escuelas "Escuela A"
+    , "Escuela B", "Escuela C", "Escuela D", "Escuela E", "Escuela F", "Escuela G", "Escuela H"
+  CorrectAnswer: Escuelas <- c("Escuela A", "Escuela B", "Escuela C", "Escuela D", "Escuela E", "Escuela F", "Escuela G", "Escuela H")
+  AnswerTests: omnitest(correctExpr='Escuelas <- c("Escuela A", "Escuela B", "Escuela C", "Escuela D", "Escuela E", "Escuela F", "Escuela G", "Escuela H")')
+  Hint: Utiliza la funcion c() para crear la lista con las escuelas indicadas.
+    
+- Class: cmd_question
+  Output: Utiliza la función sample() para seleccionar 3 conglomerados de la población.
+  CorrectAnswer: sample(Escuelas, 3)
+  AnswerTests: omnitest(correctExpr='sample(Escuelas, 3)')
+  Hint: Utiliza la funcion sample(). El primer argumento es la lista de escuelas conglomerados.
+  
+- Class: mult_question
+  Output: Si R seleccionó "Escuela C" y "Escuela F" como muestra, ¿qué significa este resultado en un muestreo por conglomerados?
+  AnswerChoices: Que únicamente los estudiantes C y F fueron seleccionados.;Que las escuelas C y F fueron seleccionadas como conglomerados y sus elementos forman parte de la muestra.;Que todos los estudiantes tuvieron la misma edad.;Que las escuelas C y F tienen las mismas características que las demás.
+  CorrectAnswer: Que las escuelas C y F fueron seleccionadas como conglomerados y sus elementos forman parte de la muestra.
+  AnswerTests: omnitest(correctVal='Que las escuelas C y F fueron seleccionadas como conglomerados y sus elementos forman parte de la muestra.')
+  Hint: Recuerda que en este método se seleccionan grupos, no individuos directamente.
+  
+- Class: text
+  Output: El muestreo por conglomerados es una técnica clave cuando se trabaja con grandes poblaciones y recursos limitados. Su principal ventaja 
+    es la eficiencia: permite recoger datos de forma más rápida y económica. Sin embargo, también implica un reto importante: elegir bien los conglomerados.
 #===================================================
 # Muestreo por conveniencia
 #===================================================
 - Class: text
-  Output: El muestreo por conveniencia método depende de la facilidad de acceso a los sujetos como una encuesta a los clientes en un centro comercial 
-  o a los transeúntes en una calle concurrida.
+  Output: El muestreo por conveniencia es un método de muestreo no probabilístico donde los participantes son seleccionados basados en la accesibilidad y la 
+    conveniencia para el investigador. Este método se utiliza a menudo en investigaciones exploratorias y estudios piloto debido a su facilidad y rapidez de implementación.
   
 - Class: text
   Ouput: Un ejemplo de este metodo: un investigador que realiza un estudio sobre hábitos alimenticios podría seleccionar a estudiantes universitarios que 
@@ -141,5 +179,35 @@
     sesgos adicionales.
     
 - Class: text
+  Output: Una de las principales limitaciones del muestreo por conveniencia es que los participantes no se seleccionan aleatoriamente. Por esta razón, algunos
+    individuos de la población pueden tener pocas posibilidades de ser incluidos o incluso no tener ninguna posibilidad de participar.
+    
+- Class: text
   Output: El muestreo por conveniencia es una forma de muestreo no probabilístico, lo que significa que no todos los individuos de la población tienen la misma 
     probabilidad de ser seleccionados. Esto limita la capacidad de generalizar los resultados a toda la población.
+    
+- Class: mult_question
+  Output: Para comezar con la practica contesta, ¿Cuál de las siguientes es una ventaja práctica del muestreo por conveniencia?
+  AnswerChoices: Garantiza que todos los individuos tengan la misma probabilidad de ser seleccionados.;Siempre produce una muestra representativa de la población.;Permite obtener participantes de manera rápida y con pocos recursos.;Elimina completamente el sesgo de selección.
+  CorrectAnswer:Permite obtener participantes de manera rápida y con pocos recursos.
+  AnswerTests: omnitest(correctVal='Permite obtener participantes de manera rápida y con pocos recursos.')
+  Hint: Piensa en la razón por la que un investigador podría elegir participantes que son fáciles de contactar.
+  
+- Class: cmd_question
+  Output: En la leccion existe una poblacion de estudiantes, 70 son del turno Matutino y 30 el turno Vespertino. Para la practica de R 
+    debes de crear una variable que se llame muestra que contenga unicamente a los alumnos del turno matutino.
+  CorrectAnswer: muestra <- subset(estudiantes, turno == "Matutino")
+  AnswerTests: test_muestra_conveniencia()
+  Hint: Utiliza subset() y como primer parametro llama a estudiantes y como segundo parametro pon turno == "" y el turno que quieras poner empezando con mayusculas.
+  
+- Class: mult_question
+  Output: La población tiene 100 estudiantes, pero la muestra por conveniencia contiene únicamente estudiantes del turno matutino. 
+    ¿Podemos afirmar que esta muestra representa adecuadamente a toda la población?
+  AnswerChoices: Sí, porque contiene muchos estudiantes.;Sí, porque todos los estudiantes tuvieron la misma probabilidad de selección.;No, porque los estudiantes del turno vespertino no están representados.;No, porque una muestra siempre debe contener exactamente 50 estudiantes.
+  CorrectAnswer: No, porque los estudiantes del turno vespertino no están representados.
+  AnswerTests: omnitest(correctVal='No, porque los estudiantes del turno vespertino no están representados.')
+  Hint: Observa quiénes forman parte de la muestra y quiénes quedaron fuera.
+  
+- Class: text
+  Output: El muestreo por conveniencia es una técnica útil en contextos donde se necesita recolectar datos rápidamente y con recursos limitados. Sin embargo, 
+    es crucial ser consciente de sus limitaciones y potenciales sesgos al interpretar los resultados.

@@ -10,6 +10,7 @@
 # Referencias
 # https://www.questionpro.com/blog/es/que-es-una-poblacion/
 # https://www.uv.es/webgid/Inferencial/21_introduccin.html
+# https://www.questionpro.com/blog/es/muestra-representativa-para-investigacion/
 #===================================================
 
 #===================================================
@@ -27,11 +28,18 @@
     población puede comprender una nación o un grupo de personas u objetos con una característica común. 
     Incluye a todo el grupo bien definido sobre el que cualquier investigación quiere extraer conclusiones.
 
-# A tomar en cuenta -------!    
-#- Class: text
-#  Output: Un concepto clave de muestreo es el de representatividad: Los procedimientos de muestreo 
-#    tienen por objeto generar muestras lo más representativas posible de las poblaciones dados los objetivos 
-#    de la investigación y las circunstancias que afectan al muestreo.
+- Class: text
+  Output: Un concepto clave de muestreo es el de representatividad: Los procedimientos de muestreo 
+    tienen por objeto generar muestras lo más representativas posible de las poblaciones dados los objetivos 
+    de la investigación y las circunstancias que afectan al muestreo. Si no tenemos representatividad, seguramente 
+    tendremos datos que no nos servirán para nada. Es importante que garanticemos que las características que nos 
+    importan y necesitamos investigar, se encuentren en la muestra que va a ser objeto de estudio.
+    
+- Class: text
+  Output: Otro concepto importante de el muestreo es el error de muestreo: Cuando una muestra no es representativa, 
+  entonces tendremos un error de muestreo. Si queremos tener una muestra representativa de 100 empleados, entonces 
+  debemos escoger un número similar entre hombres y mujeres. Por ejemplo, si tenemos una muestra inclinada a cierto género, 
+  entonces tendremos un error en la muestra.
     
 - Class: text
   Output: Un ejemplo que explica mejor el muestro. Sea un curso con 40 estudiantes, queremos conocer la Media 
@@ -50,3 +58,32 @@
   CorrectAnswer: 500
   AnswerTest: omnitest(correctVal = 500)
   Hint: Una parte de la poblacion.
+  
+- Class: text
+  Output: Para empezar con el muestreo utilizaremos el metodo set.seed(123) que lo que significa es que nos da datos de una lista que en 
+    este caso serian las poblaciones aleatoriamente. Vamos a ponerlo en practica.
+    
+- Class: cmd_question
+  Output: Ingresa primero el metodo set.seed(123).
+  CorrectAnswer: set.seed(123)
+  AnswerTests: omnitest(correctExpr='set.seed(123)')
+  Hint: Utiliza la funcion set.seed(123). Revisa que todo este bien escrito.
+
+- Class: cmd_question
+  Output: Creara una lista del 1 al 50 y almacenala en una variable llamada poblacion
+  CorrectAnswer: poblacion <- 1:50
+  AnswerTests: omnitest(correctExpr='poblacion <- 1:50')
+  Hint: Usa la siguiente expresion 1:50
+  
+- Class: cmd_question
+  Output: Ahora para ver esta aleatoridad vamos a obtener la muestra de esa poblacion, utiliza la funcion sample() para 
+    obtener una muestra de 5 datos de la poblacion creada, usando como primer parametro la poblacion y como segundo parametro la muestra.
+  CorrectAnswer: sample(poblacion, 5)
+  AnswerTests: omnitest(correctExpr='sample(poblacion, 5)')
+  Hint: Para usar bien el sample utiliza la poblacion como argumento inicial y el segundo argumento usa el tamaño de la muestra.
+  
+- Class: text
+  Output: Como se puede ver, se muestran datos aleatorios de la poblacion lo que ayuda a la obtencion de datos para un analisis. Este proceso 
+    de meter la poblacion y generar la muestra no lo tendras que hacer, en las siguientes lecciones se hara uso del archivo initLesson que 
+    creara todo por ti para conocer los distintos metodos de muestreo. Esta leccion tuvo como objetivo que el alumno reconociera el concepto 
+    basico del muestreo y entendiera el manejo de los comandos de R para la obtencion de este misma.

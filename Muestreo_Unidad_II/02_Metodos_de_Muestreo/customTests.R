@@ -10,3 +10,12 @@
       # variables when appropriate. The answer test, creates_new_var()
       # can be used for for the purpose, but it also re-evaluates the
       # expression which the user entered, so care must be taken.
+
+test_muestra_conveniencia <- function() {
+  if (!exists("muestra")) {
+    FALSE
+  } else {
+    nrow(muestra) == 70 &&
+      all(muestra$turno == "Matutino")
+  }
+}
