@@ -8,14 +8,46 @@
   
 #===================================================
 # Referencias
+#
+# Cristina Ortega. (s.f). Métodos de muestreo: Ejemplos y usos
+# QuestionPro.
 # https://www.questionpro.com/blog/es/metodos-de-muestreo/
+#
+# Universidad Europea. (s.f.). Tipos de muestreo: qué es y cuáles son
 # https://universidadeuropea.com/blog/tipos-de-muestreo/
+#
+# Carlos Ochoa. (s.f). Muestreo aleatorio simple: Definición, características y Ejemplos
+# Netquest
 # https://www.netquest.com/blog/muestreo-probabilistico-muestreo-aleatorio-simple
+#
+# Jesús Mellado. (s.f). Muestreo por Conglomerados
+# Universidad Autónoma Agraria Antonio Narro
 # https://www.uaaan.mx/~jmelbos/muestreo/muapu5
+#
+# Universidad Nacional Autónoma de México. (s.f). Introducción a la estadística
+# https://cc.sisal.unam.mx/Guias/GuiaEstadisticaR.html
+#
+# Carlos Ochoa. (s.f). Muestreo sistemático: qué es, ejemplos y ventajas en investigación
+# Netquest
+# https://www.netquest.com/blog/muestreo-sistematico
+#
+# Carlos Ochoa. (s.f). Muestreo estratificado: una técnica avanzada de muestreo probabilístico
+# Netquest
+# https://www.netquest.com/blog/muestreo-probabilistico-muestreo-estratificado
+#
+# Carlos Ochoa. (s.f). Muestreo por conglomerados explicado fácil paso a paso
+# Netquest
 # https://www.netquest.com/blog/muestreo-probabilistico-muestreo-conglomerados
+#
+# Carlos Ochoa. (s.f). Muestreo por Conveniencia: Qué es, ejemplos y características
+# Netquest
 # https://www.netquest.com/blog/muestreo-por-conveniencia
 #
 #===================================================
+
+- Class: text
+  Output: El objetivo de esta lección es conocer y comprender los principales métodos de muestreo, identificando sus características, 
+    procedimientos, ventajas y limitaciones utilizando la herramienta R para realizar estos metodos de manera sencilla.
 
 #===================================================
 # Explicacion
@@ -24,7 +56,7 @@
   Output: El muestreo de probabilidad es una técnica de muestreo en la que los investigadores 
     eligen muestras de una población más grande utilizando un método basado en la teoría de la 
     probabilidad. Este es uno de los métodos de muestreo que considera a todos los miembros de la 
-    población y forma muestras basadas en un proceso fijo. Existen 4 metodos de muestreo:
+    población y forma muestras basadas en un proceso fijo. Existen 4 metodos de muestreo.
     
 
 #===================================================
@@ -48,11 +80,11 @@
   Output: ¿Cual de las siguientes afirmaciones describe mejor el muestreo aleatorio simple?
   AnswerChoices: Todos los elementos tienen la misma probabilidad de ser seleccionados.;Se seleccionan únicamente los elementos más accesibles.;Se selecciona un elemento de cada grupo de la población.;Se seleccionan grupos completos de individuos.
   CorrectAnswer: Todos los elementos tienen la misma probabilidad de ser seleccionados.
-  AnswerTests: omitest(correctVal='Todos los elementos tienen la misma probabilidad de ser seleccionados.')
+  AnswerTests: omnitest(correctVal='Todos los elementos tienen la misma probabilidad de ser seleccionados.')
   Hint: Recuerda que el metodo selecciona elementos aleatorios.
   
 - Class: text
-  Output: Un ejemplo sobre este metodo: Una escuela tiene 500 alumnos y quieren encuestar a 50. Se numeran los 500 alumnos y se elige los 50 alumnos al azar, 
+  Output: Un ejemplo sobre este metodo, Una escuela tiene 500 alumnos y quieren encuestar a 50. Se numeran los 500 alumnos y se elige los 50 alumnos al azar, 
     esos 50 alumnos forman parte de la muestra.
     
 - Class: cmd_question
@@ -64,25 +96,94 @@
 - Class: mult_question
   Output: De la muestra que obtuviste. Si un estudiante no fue seleccionado en esta muestra, ¿significa que tiene una menor probabilidad de ser seleccionado?
   AnswerChoices: No, todos los estudiantes tenían la misma probabilidad de ser seleccionados.;Sí, los estudiantes no seleccionados tenían menor probabilidad.;Sí, porque sample() selecciona a los estudiantes con mejores características.;No, porque únicamente se seleccionan estudiantes de ciertos semestres.
+  CorrectAnswer: No, todos los estudiantes tenían la misma probabilidad de ser seleccionados.
   AnswerTests: omnitest(correctVal='No, todos los estudiantes tenían la misma probabilidad de ser seleccionados.')
   Hint: Recuerda que el metodo selecciona elementos aleatorios.
   
 - Class: text
   Output: En conclusion el muestreo aleatorio simple es una técnica fundamental para entender a grandes grupos de personas sin tener que analizarlos a todos. Su principal 
     ventaja es la igualdad de oportunidades en la selección, lo que garantiza resultados más objetivos. Sin embargo, su correcta aplicación depende de un 
-    elemento clave: disponer de un buen listado de la población. Sin esto, incluso el mejor método puede fallar.
+    elemento clave, disponer de un buen listado de la población. Sin esto, incluso el mejor método puede fallar.
 #===================================================
 # Muestreo sistematico
 #===================================================
-# Investigar!
 - Class: text
-  Output: El muestreo sistemático es un tipo de método de muestreo probabilístico utilizado en la investigación para seleccionar individuos de una 
-    población objetivo a intervalos regulares.
+  Output: El muestreo sistemático es un proceso muy simple y que sólo requiere la elección de un individuo al azar. El resto del proceso es trivial y rápido. 
+    Los resultados que obtenemos son representativos de la población, de forma similar al muestreo aleatorio simple.
+
+- Class: text
+  Output: El intervalo de selección, también llamado intervalo de muestreo, indica cada cuántos elementos de la población se 
+    seleccionará una unidad para formar parte de la muestra. Se representa mediante la letra k y se determina dividiendo el tamaño 
+    de la población (N) entre el tamaño de la muestra deseada (n), mediante la fórmula k = N / n.
     
-# Link caido, corregirlo
 - Class: text
-  Output: El intervalo de seleccion, tambien conocido como intervalo de muestreo, es la distancia numérica o el salto entre los elementos que se eligen 
-    de una lista de población para armar una muestra.
+  Output: Una vez calculado el intervalo de seleccion es momento de escoger nuestro punto inicial. Obtenemos un número aleatorio 
+    entero A, menor o igual al intervalo. Este número corresponderá al primer sujeto que seleccionaremos para la muestra dentro del 
+    primer fragmento en que hemos dividido la población. A partir de este elemento se seleccionarán los siguientes elementos utilizando 
+    el intervalo k hasta completar el tamaño de muestra deseado.
+    
+- Class: text
+  Output: Para realizar un muestreo sistemático, primero se calcula el intervalo de selección k = N / n. Después, se elige aleatoriamente 
+    un punto inicial entre 1 y k. A partir de ese punto, se selecciona cada k elementos hasta obtener el tamaño de muestra deseado.
+    
+- Class: text
+  Output: El procedimiento seria algo asi, si el intervalo de selección es k = 5 y el punto inicial seleccionado es 3, los elementos de la muestra serán 
+    3, 8, 13, 18, 23 y así sucesivamente hasta completar la muestra. Los elementos seleccionados siguen una sucesión aritmética en la que el
+    intervalo de selección determina la distancia entre cada elemento.
+    
+- Class: text
+  Output: Vamos a poner en practica este muestreo, se ha creado una variable llamado Marco.muestral, N es igual a 500 y n es igual a 100.
+  
+- Class: cmd_question
+  Output: Calcula el intervalo de selección k dividiendo el tamaño de la población N entre el tamaño de muestra n y almacénalo en la variable k.
+  CorrectAnswer: k <- N/n
+  AnswerTests: omnitest(correctExpr='k <- N/n')
+  Hint: Utiliza la fórmula k = N/n.
+  
+- Class: cmd_question
+  Output: Selecciona aleatoriamente un punto inicial entre 1 y k y almacénalo en la variable A.
+  CorrectAnswer: A <- sample(1:k, 1, F)
+  AnswerTests: omnitest(correctExpr='A <- sample(1:k, 1, F)')
+  Hint: Utiliza sample() para seleccionar un único elemento entre 1 y k.
+  
+- Class: cmd_question
+  Output: Genera los índices de los elementos que formarán la muestra comenzando desde A, terminando en N y avanzando según el intervalo k. 
+    Almacena el resultado en indices.
+  CorrectAnswer: indices <- seq(from=A, to=N, by=k)
+  AnswerTests: omnitest(correctExpr='indices <- seq(from=A, to=N, by=k)')
+  Hint: Utiliza seq() con from=A, to=N y by=k.
+  
+- Class: cmd_question
+  Output: Utiliza los índices obtenidos para seleccionar los elementos correspondientes del Marco.muestral y almacena la muestra en una variable llamada Muestra.
+  CorrectAnswer: Muestra <- Marco.muestral[indices]
+  AnswerTests: omnitest(correctExpr='Muestra <- Marco.muestral[indices]')
+  Hint: Utiliza los índices entre corchetes para seleccionar los elementos del marco muestral.
+  
+- Class: cmd_question
+  Output: Muestra los elementos seleccionados que se encuentran almacenados en la variable Muestra.
+  CorrectAnswer: Muestra
+  AnswerTests: omnitest(correctExpr='Muestra')
+  Hint: Escribe el nombre de la variable que contiene la muestra.
+  
+- Class: mult_question
+  Output: ¿Qué representa el valor obtenido en la variable k?
+  AnswerChoices: El tamaño de la población.;El tamaño de la muestra.;La cantidad de posiciones que se avanza entre cada elemento seleccionado.;El primer elemento seleccionado.
+  CorrectAnswer: La cantidad de posiciones que se avanza entre cada elemento seleccionado.
+  AnswerTests: omnitest(correctVal = "La cantidad de posiciones que se avanza entre cada elemento seleccionado.")
+  Hint: Recuerda qué representa el intervalo de selección.
+  
+- Class: mult_question
+  Output: Si el intervalo de selección es k = 50 y el punto inicial obtenido es A = 7,
+    ¿qué elementos se seleccionarían al aplicar el procedimiento?
+  AnswerChoices: 7, 8, 9, 10, 11;7, 57, 107, 157, 207;50, 100, 150, 200, 250;1, 51, 101, 151, 201
+  CorrectAnswer: 7, 57, 107, 157, 207
+  AnswerTests: omnitest(correctVal = "7, 57, 107, 157, 207")
+  Hint: Comienza en A y suma el intervalo k en cada selección.
+  
+- Class: text
+  Output: En conclusion el muestreo sistemático es una técnica sencilla, rápida y muy útil para seleccionar muestras en grandes poblaciones. Su principal 
+    ventaja es la eficiencia, pero también tiene un riesgo importante, si existe un patrón oculto en la población, los resultados pueden verse afectados.
+    Por eso, antes de aplicarlo, es clave entender bien cómo está organizada la información.
 #===================================================
 # Muestreo estratificado
 #===================================================
@@ -93,7 +194,55 @@
     y luego extraer una muestra de cada grupo por separado.
     
 - Class: text
-  Output: 
+  Output: En este muestreo hace uso de los estratos, los estratos son categorias que poseen una gran homogeneidad respecto a 
+    alguna caracteristica, por ejemplo, se puede usar la profesión, el municipio de residencia, el sexo, el estado civil, etc.
+    
+- Class: text
+  Output: La razon por la que se dividen en estratos es que, los estratos de interés estarán representados adecuadamente en la 
+    muestra. De esta manera, en lugar de seleccionar elementos sin considerar los grupos a los que pertenecen, se obtiene una muestra de los
+    diferentes estratos de la población. Cada estrato funciona independientemente, pudiendo aplicarse dentro de ellos el muestreo aleatorio 
+    simple o el estratificado para elegir los elementos concretos que formarán parte de la muestra. Es utilizado cuando tenemos grupos homogéneos.
+    
+- Class: text
+  Output: Por ejemplo, si una universidad tiene estudiantes de Ingeniería, Administración y Contaduría, estas carreras pueden utilizarse 
+    como estratos. Si se desea obtener una muestra de estudiantes, se seleccionan algunos estudiantes de cada carrera para asegurar que 
+    las tres estén representadas en la muestra.
+    
+- Class: text
+  Output: El muestreo estratificado se diferencia del muestreo por conglomerados en la forma en que se utilizan los grupos. En el muestreo 
+    estratificado se seleccionan elementos de cada estrato para que los diferentes grupos estén representados en la muestra. En el muestreo por 
+    conglomerados, se seleccionan algunos grupos o conglomerados y se estudian los elementos que pertenecen a ellos.
+    
+- Class: cmd_question
+  Output: Utiliza la función table() para conocer cuántos elementos pertenecen a cada estrato de la población_muestral.
+  CorrectAnswer: table(poblacion_muestral$profesion)
+  AnswerTests: omnitest(correctExpr='table(poblacion_muestral$profesion)')
+  Hint: Utiliza table() sobre la variable profesion.
+  
+- Class: cmd_question
+  Output: Selecciona aleatoriamente 10 elementos del estrato Ingenieria utilizando la función sample().
+  CorrectAnswer: sample(poblacion_muestral$id[poblacion_muestral$profesion == "Ingenieria"], 10)
+  AnswerTests: omnitest(correctExpr='sample(poblacion_muestral$id[poblacion_muestral$profesion == "Ingenieria"], 10)')
+  Hint: Primero selecciona los elementos cuya profesion sea Ingenieria y después utiliza sample(), usando como primer parametro poblacion_muestral$id[poblacion_muestral$profesion == "Ingenieria"] 
+    y como segundo la cantidad de elementos.
+    
+- Class: mult_question
+  Output: En el ejercicio realizado, ¿qué representa la variable profesion?
+  AnswerChoices: El tamaño de la muestra.;El intervalo de selección.;La característica utilizada para formar los estratos.;El punto inicial de la muestra.
+  CorrectAnswer: La característica utilizada para formar los estratos.
+  AnswerTests: omnitest(correctVal = "La característica utilizada para formar los estratos.")
+  Hint: Los estratos se formaron utilizando una característica común.
+  
+- Class: mult_question
+  Output: ¿Por qué se seleccionan estudiantes de cada estrato en el muestreo estratificado?
+  AnswerChoices: Para asegurar que los diferentes grupos de interés estén representados en la muestra.;Para seleccionar únicamente los grupos más grandes.;Para evitar utilizar métodos aleatorios.;Para convertir los estratos en conglomerados.
+  CorrectAnswer: Para asegurar que los diferentes grupos de interés estén representados en la muestra.
+  AnswerTests: omnitest(correctVal = "Para asegurar que los diferentes grupos de interés estén representados en la muestra.")
+  Hint: Recuerda cuál es el objetivo principal de dividir la población en estratos.
+  
+- Class: text
+  Output: En conclusion el muestreo estratificado es una técnica que nos permite reducir el error en nuestras estimaciones siempre y cuando 
+    tengamos cierta información a priori sobre la existencia de grupos homogéneos en la población.
 #===================================================
 # Muestreo por conglomerados
 #===================================================
@@ -113,7 +262,7 @@
     
 - Class: text
   Output: La diferencia entre los estratos y conglomerados son en como se seleccionan los elementos de los grupos. Los estratos selecciona los individuos 
-  de cada grupo divido de la poblacion manualmente el conglomerado selecciona a varios grupos en vez de a los individuos.
+    de cada grupo divido de la poblacion manualmente el conglomerado selecciona a varios grupos en vez de a los individuos.
     
 - Class: mult_question
   Output: Veamos estas situaciones. En una universidad tiene 20 grupos de estudiantes. Cada grupo tiene estudiantes que toman clases juntos. Si se seleccionan algunos grupos 
@@ -131,11 +280,11 @@
   Hint: Estratficado se selecciona un individuo y el conglomerado selecciona grupos.
   
 - Class: text
-  Output: Un ejemplo del muestreo por conglomerados es: una empresa quiere analizar habitos de consumo, divide el pais en ciudades, selecciona ciudades al azar y 
+  Output: Un ejemplo del muestreo por conglomerados es, una empresa quiere analizar habitos de consumo, divide el pais en ciudades, selecciona ciudades al azar y 
     estudia a los habitantes de esa ciudad.
     
 - Class: text
-  Output: Otro ejemplo: una universidad desea conocer la opinion de sus estudiantes sobre las instalaciones. En lugar de seleccionar a estudiantes aleatoriamente 
+  Output: Otro ejemplo, una universidad desea conocer la opinion de sus estudiantes sobre las instalaciones. En lugar de seleccionar a estudiantes aleatoriamente 
     optan por seleccionar aleatoriamente una carrera y asi realizar la encuesta a los estudiantes de esa carrera.
     
 - Class: cmd_question
@@ -160,7 +309,7 @@
   
 - Class: text
   Output: El muestreo por conglomerados es una técnica clave cuando se trabaja con grandes poblaciones y recursos limitados. Su principal ventaja 
-    es la eficiencia: permite recoger datos de forma más rápida y económica. Sin embargo, también implica un reto importante: elegir bien los conglomerados.
+    es la eficiencia, permite recoger datos de forma más rápida y económica. Sin embargo, también implica un reto importante, elegir bien los conglomerados.
 #===================================================
 # Muestreo por conveniencia
 #===================================================
@@ -169,12 +318,12 @@
     conveniencia para el investigador. Este método se utiliza a menudo en investigaciones exploratorias y estudios piloto debido a su facilidad y rapidez de implementación.
   
 - Class: text
-  Ouput: Un ejemplo de este metodo: un investigador que realiza un estudio sobre hábitos alimenticios podría seleccionar a estudiantes universitarios que 
+  Output: Un ejemplo de este metodo, un investigador que realiza un estudio sobre hábitos alimenticios podría seleccionar a estudiantes universitarios que 
     se encuentran en la cafetería del campus porque son fácilmente accesibles.
     
-- Class text
-  Output: Las principales ventajas del muestreo por convenencia son: es facil y rapido llevar a cabo, requiere menos recursos en comparacion con otros metodos de 
-    muestreo y es util para estudios preliminares y exploratorios. Sus principales Desventajas son: los resultados pueden estar sesgados debido a la falta 
+- Class: text
+  Output: Las principales ventajas del muestreo por convenencia son, es facil y rapido llevar a cabo, requiere menos recursos en comparacion con otros metodos de 
+    muestreo y es util para estudios preliminares y exploratorios. Sus principales Desventajas son, los resultados pueden estar sesgados debido a la falta 
     de aleatoriedad, los hallazgos pueden no ser representativos de la poblacion total y depende de la disponibilidad de los participantes, lo que puede introducir 
     sesgos adicionales.
     
@@ -189,7 +338,7 @@
 - Class: mult_question
   Output: Para comezar con la practica contesta, ¿Cuál de las siguientes es una ventaja práctica del muestreo por conveniencia?
   AnswerChoices: Garantiza que todos los individuos tengan la misma probabilidad de ser seleccionados.;Siempre produce una muestra representativa de la población.;Permite obtener participantes de manera rápida y con pocos recursos.;Elimina completamente el sesgo de selección.
-  CorrectAnswer:Permite obtener participantes de manera rápida y con pocos recursos.
+  CorrectAnswer: Permite obtener participantes de manera rápida y con pocos recursos.
   AnswerTests: omnitest(correctVal='Permite obtener participantes de manera rápida y con pocos recursos.')
   Hint: Piensa en la razón por la que un investigador podría elegir participantes que son fáciles de contactar.
   
@@ -211,3 +360,57 @@
 - Class: text
   Output: El muestreo por conveniencia es una técnica útil en contextos donde se necesita recolectar datos rápidamente y con recursos limitados. Sin embargo, 
     es crucial ser consciente de sus limitaciones y potenciales sesgos al interpretar los resultados.
+    
+#===================================================
+# Diferencias
+#===================================================
+- Class: text
+  Output: Vamos a poner a prueba el conocimiento aprendido de los temas, se pondran preguntas para diferenciar los distintos metodos estudiados,
+    los ejercicios son de opcion multiple y se pondran una ayuda por si se te complican.
+
+- Class: mult_question
+  Output: Una universidad tiene 2,000 estudiantes y desea conocer su opinión sobre las instalaciones. Los estudiantes se encuentran registrados 
+    en una lista y se seleccionan 100 estudiantes completamente al azar. ¿Qué método de muestreo se está utilizando?
+  AnswerChoices: Muestreo aleatorio simple;Muestreo sistemático;Muestreo estratificado;Muestreo por conglomerados
+  CorrectAnswer: Muestreo aleatorio simple
+  AnswerTests: omnitest(correctVal='Muestreo aleatorio simple')
+  Hint: En este método los elementos se seleccionan directamente al azar y todos tienen la misma probabilidad de ser elegidos.
+  
+- Class: mult_question
+  Output: Una empresa tiene una lista de 1,000 empleados y desea seleccionar 100. Primero calcula k = 1,000 / 100 = 10, elige aleatoriamente un 
+    punto inicial y después selecciona cada 10 empleados. ¿Qué método está utilizando?
+  AnswerChoices: Muestreo aleatorio simple;Muestreo sistemático;Muestreo estratificado;Muestreo por conveniencia
+  CorrectAnswer: Muestreo sistemático
+  AnswerTests: omnitest(correctVal='Muestreo sistemático')
+  Hint: Observa que después de elegir el punto inicial se utiliza un intervalo fijo para seleccionar los siguientes elementos.
+  
+- Class: mult_question
+  Output: Relaciona cada situación con el método de muestreo que corresponde. Una empresa necesita estudiar a sus empleados y realiza 
+    uno de los siguientes procedimientos, A) selecciona empleados completamente al azar; B) selecciona un empleado inicial y después cada 20 empleados; 
+    C) divide a los empleados por departamento y selecciona empleados de cada departamento; D) encuesta únicamente a los empleados que están disponibles 
+    en ese momento. ¿Cuál opción relaciona correctamente cada procedimiento con su método?
+  AnswerChoices: A-Aleatorio simple, B-Sistemático, C-Estratificado, D-Conveniencia;A-Sistemático, B-Aleatorio simple, C-Conglomerados, D-Estratificado;A-Estratificado, B-Sistemático, C-Aleatorio simple, D-Conglomerados;A-Conglomerados, B-Sistemático, C-Conveniencia, D-Aleatorio simple
+  CorrectAnswer: A-Aleatorio simple, B-Sistemático, C-Estratificado, D-Conveniencia
+  AnswerTests: omnitest(correctVal='A-Aleatorio simple, B-Sistemático, C-Estratificado, D-Conveniencia')
+  Hint: Identifica primero la característica principal de cada procedimiento, azar, intervalo, grupos representados o accesibilidad.
+  
+- Class: mult_question
+  Output: Una universidad tiene estudiantes de Ingeniería, Administración, Contaduría y Derecho. Para formar una muestra, se seleccionan 
+    estudiantes de cada una de las cuatro carreras. ¿Qué método de muestreo describe mejor esta situación?
+  AnswerChoices: Muestreo aleatorio simple;Muestreo sistemático;Muestreo estratificado;Muestreo por conglomerados
+  CorrectAnswer: Muestreo estratificado
+  AnswerTests: omnitest(correctVal='Muestreo estratificado')
+  Hint: En este método se busca que los diferentes grupos de interés estén representados en la muestra.
+  
+- Class: mult_question
+  Output: Un investigador desea conocer los hábitos alimenticios de los estudiantes de una universidad. Para obtener los datos, encuesta únicamente 
+    a los estudiantes que encuentra disponibles en la cafetería durante el horario del estudio. ¿Qué método está utilizando?
+  AnswerChoices: Muestreo aleatorio simple;Muestreo sistemático;Muestreo estratificado;Muestreo por conveniencia
+  CorrectAnswer: Muestreo por conveniencia
+  AnswerTests: omnitest(correctVal='Muestreo por conveniencia')
+  Hint: Piensa en la forma en que fueron elegidos los participantes. ¿Fueron seleccionados aleatoriamente o porque eran fáciles de contactar?
+  
+- Class: text
+  Output: Ahora conoces diferentes formas de seleccionar una muestra y puedes identificar cuál método es más adecuado según las
+    características de una población y los objetivos de un estudio. Recuerda que elegir correctamente el método de muestreo 
+    es fundamental para obtener información útil y realizar interpretaciones adecuadas de los resultados.

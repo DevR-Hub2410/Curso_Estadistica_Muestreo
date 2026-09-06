@@ -16,6 +16,19 @@ poblacion <- data.frame(
   semestre = sample(1:10, 500, replace = TRUE)
 )
 
+Marco.muestral <- 1:5000
+N <- 5000
+n <- 100
+
+poblacion_muestral <- data.frame(
+  id = 1:100,
+  profesion = c(
+    rep("Ingenieria", 50),
+    rep("Administracion", 30),
+    rep("Contaduria", 20)
+  )
+)
+
 estudiantes <- data.frame(
   id = 1:100,
   turno = c(
