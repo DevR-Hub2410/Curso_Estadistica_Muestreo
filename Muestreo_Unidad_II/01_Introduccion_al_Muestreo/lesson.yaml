@@ -42,7 +42,7 @@
   entonces tendremos un error en la muestra.
     
 - Class: text
-  Output: Un ejemplo que explica mejor el muestro. Sea un curso con 40 estudiantes, queremos conocer la Media 
+  Output: Un ejemplo que explica mejor el muestreo. Sea un curso con 40 estudiantes, queremos conocer la Media 
     de las puntuaciones del curso, pero por diversas razones no tenemos acceso a todos los datos, supongamos que 
     podemos seleccionar cinco puntuaciones aleatoriamente y obtener la Media de la muestra. Si repetimos el proceso 
     y generamos más muestras tendremos más Medias muestrales y podremos ver cómo se distribuyen.
