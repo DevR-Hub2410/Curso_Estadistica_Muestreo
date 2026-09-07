@@ -1,4 +1,7 @@
-# Code placed in this file fill be executed every time the
-      # lesson is started. Any variables created here will show up in
-      # the user's working directory and thus be accessible to them
-      # throughout the lesson.
+set.seed(123)
+
+tiempos_respuesta <- data.frame(
+  id = 1:1000,
+  servidor = sample(c("A", "B", "C"), 1000, replace = TRUE),
+  tiempo_ms = round(rnorm(1000, mean = 250, sd = 40), 1)
+)
