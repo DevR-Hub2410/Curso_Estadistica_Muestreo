@@ -8,10 +8,23 @@
   
 #===================================================
 # Referencias
-# https://www.questionpro.com/blog/es/que-es-una-poblacion/
+# Universidad de Valencia. (s.f.). Introducción a la inferencia estadística.
+# Universitat de València.
 # https://www.uv.es/webgid/Inferencial/21_introduccin.html
-# https://www.questionpro.com/blog/es/muestra-representativa-para-investigacion/
+#
+# [Tamara Otzen, Carlos Manterola]. (2017). [Técnicas de Muestreo sobre una Población a Estudio].
+# International Journal of Morphology, 35(1).
+# https://scielo.conicyt.cl/pdf/ijmorphol/v35n1/art37.pdf
+#
+# Instituto Tecnologico de Chihuahua (s.f.).
+# Unidad I: Teoría del muestreo.
+# https://virtual.uptc.edu.co/ova/estadistica/docs/libros/estadistica1/cap01.html
 #===================================================
+
+- Class: text
+  Output: El objetivo de esta lección es comprender los conceptos fundamentales del muestreo, identificando qué es una población, 
+    una muestra, la representatividad y el error de muestreo. Además, se busca que el alumno conozca el uso básico de las funciones 
+    set.seed() y sample() en R para generar muestras aleatorias y reconocer la relación entre una población y su muestra.
 
 #===================================================
 # Explicacion
@@ -26,20 +39,31 @@
   Output: En el muestreo existe un concepto clave que ayuda a entender el motivo de las muestras "la poblacion".
     Una población es un conjunto completo de individuos u objetos que comparten características similares. La 
     población puede comprender una nación o un grupo de personas u objetos con una característica común. 
-    Incluye a todo el grupo bien definido sobre el que cualquier investigación quiere extraer conclusiones.
+    Incluye a todo el grupo bien definido sobre el que cualquier investigación quiere extraer conclusiones. Entonces, 
+    el muestreo tiene por objetivo estudiar las relaciones existentes entre la distribución de una variable “y” en una 
+    población “z” y las distribución de ésta variable en la muestra a estudio
 
 - Class: text
-  Output: Un concepto clave de muestreo es el de representatividad: Los procedimientos de muestreo 
-    tienen por objeto generar muestras lo más representativas posible de las poblaciones dados los objetivos 
-    de la investigación y las circunstancias que afectan al muestreo. Si no tenemos representatividad, seguramente 
-    tendremos datos que no nos servirán para nada. Es importante que garanticemos que las características que nos 
-    importan y necesitamos investigar, se encuentren en la muestra que va a ser objeto de estudio.
+  Output: La representatividad de una muestra, permite extrapolar y por ende generalizar los resultados observados en ésta,
+    a la población accesible, y a partir de ésta, a la población blanco. Por ende, una muestra será representativa o no; sólo si fue seleccionada
+    al azar, es decir, que todos los sujetos de la población blanco tuvieron la misma posibilidad de ser seleccionados en esta muestra y por
+    ende ser incluidos en el estudio; y por otro lado, que el número de sujetos seleccionados representen numéricamente a la población que
+    le dio origen respecto de la distribución de la variable en estudio en la población, es decir, la estimación o cálculo del tamaño de la
+    muestra.
+    
+- Class: mult_question
+  Output: Una empresa tiene 1,000 empleados, de los cuales 500 trabajan en el turno matutino y 500 en el turno nocturno. Para conocer la satisfacción de todos los empleados se seleccionan únicamente 100 trabajadores del turno matutino. ¿Cuál es el principal problema con esta muestra?
+  AnswerChoices: La muestra es demasiado grande para realizar un estudio.;La muestra incluye a todos los empleados de la empresa.;La muestra puede no ser representativa porque no incluye trabajadores del turno nocturno.;No existe ningún problema porque se seleccionaron 100 empleados.
+  CorrectAnswer: La muestra puede no ser representativa porque no incluye trabajadores del turno nocturno.
+  AnswerTests: omnitest(correctVal = "La muestra puede no ser representativa porque no incluye trabajadores del turno nocturno.")
+  Hint: Piensa si todos los grupos importantes de la población están representados en la muestra.
     
 - Class: text
-  Output: Otro concepto importante de el muestreo es el error de muestreo: Cuando una muestra no es representativa, 
-  entonces tendremos un error de muestreo. Si queremos tener una muestra representativa de 100 empleados, entonces 
-  debemos escoger un número similar entre hombres y mujeres. Por ejemplo, si tenemos una muestra inclinada a cierto género, 
-  entonces tendremos un error en la muestra.
+  Output: Otro concepto importante de el muestreo es el error de muestreo, El error muestral se refiere a la variación 
+    natural existente entre muestras tomadas de la misma población. Cuando una muestra no es una copias exacta de la 
+    población; aún si se ha tenido gran cuidado para asegurar que dos muestras del mismo tamaño sean representativas de una 
+    cierta población, no esperaríamos que las dos sean idénticas en todos sus detalles. El error muestral es un concepto importante 
+    que ayudará a entender mejor la naturaleza de la estadística inferencial.
     
 - Class: text
   Output: Un ejemplo que explica mejor el muestreo. Sea un curso con 40 estudiantes, queremos conocer la Media 
@@ -50,13 +74,13 @@
 - Class: exact_question
   Output: Una universidad tiene 20,000 alumnos inscritos y se seleccionan a 500 alumnos para responder una encuesta,  ¿Cual es la poblacion?
   CorrectAnswer: 20000
-  AnswerTest: omnitest(correctVal = 20000)
+  AnswerTests: omnitest(correctVal = 20000)
   Hint: Recuerda el concepto clave de la poblacion.
   
 - Class: exact_question
   Output: De la pregunta anerior ¿Cual es la muestra?
   CorrectAnswer: 500
-  AnswerTest: omnitest(correctVal = 500)
+  AnswerTests: omnitest(correctVal = 500)
   Hint: Una parte de la poblacion.
   
 - Class: text
@@ -81,6 +105,40 @@
   CorrectAnswer: sample(poblacion, 5)
   AnswerTests: omnitest(correctExpr='sample(poblacion, 5)')
   Hint: Para usar bien el sample utiliza la poblacion como argumento inicial y el segundo argumento usa el tamaño de la muestra.
+  
+- Class: text
+  Output: Actividad práctica.
+    Imagina que eres un investigador que desea estudiar una población de 100 personas.
+    Debido a que analizar a todas las personas puede resultar complicado, utilizarás R
+    para seleccionar una muestra aleatoria de 10 personas.
+    
+    Durante esta actividad deberás crear la población y posteriormente obtener una muestra
+    utilizando las funciones que acabas de aprender.
+
+- Class: cmd_question
+  Output: Crea una población de 100 personas utilizando los números del 1 al 100 y almacénala en una variable llamada poblacion_actividad.
+  CorrectAnswer: poblacion_actividad <- 1:100
+  AnswerTests: omnitest(correctExpr='poblacion_actividad <- 1:100')
+  Hint: Utiliza los dos puntos para crear una secuencia del 1 al 100.
+
+- Class: cmd_question
+  Output: Establece una semilla utilizando set.seed(456) para que los resultados puedan reproducirse.
+  CorrectAnswer: set.seed(456)
+  AnswerTests: omnitest(correctExpr='set.seed(456)')
+  Hint: Utiliza la función set.seed().
+
+- Class: cmd_question
+  Output: Obtén una muestra aleatoria de 10 elementos de poblacion_actividad utilizando sample().
+  CorrectAnswer: sample(poblacion_actividad, 10)
+  AnswerTests: omnitest(correctExpr='sample(poblacion_actividad, 10)')
+  Hint: El primer argumento es la población y el segundo es el tamaño de la muestra.
+
+- Class: mult_question
+  Output: En la actividad anterior, ¿qué representan los 10 datos obtenidos mediante sample()?
+  AnswerChoices: La población completa;Una muestra de la población;Un error de muestreo;Una nueva población
+  CorrectAnswer: Una muestra de la población
+  AnswerTests: omnitest(correctVal = "Una muestra de la población")
+  Hint: Recuerda que una muestra es una parte de la población.
   
 - Class: text
   Output: Como se puede ver, se muestran datos aleatorios de la poblacion lo que ayuda a la obtencion de datos para un analisis. Este proceso 
