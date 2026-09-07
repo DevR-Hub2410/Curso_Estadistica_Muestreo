@@ -48,7 +48,7 @@
   Output: Ahora calcula la media de esa muestra usando la función mean() y guárdala en una variable llamada media_muestra_30.
   CorrectAnswer: media_muestra_30 <- mean(muestra_30)
   AnswerTests: omnitest(correctExpr='media_muestra_30 <- mean(muestra_30)')
-  Hint: Use mean() sobre la variable muestra_30 que acabas de crear.
+  Hint: Usa mean() sobre la variable muestra_30 que acabas de crear.
 
 - Class: cmd_question
   Output: Escribe media_muestra_30 para ver el valor obtenido.
@@ -211,10 +211,94 @@
   
 - Class: mult_question
   Output: Comparando las 200 varianzas que obtuviste, notas que no son idénticas entre sí. ¿A qué se debe esto?
-  AnswerChoices: A que cada muestra de 40 tiempos de respuesta es distinta, por lo que su dispersión interna también varía,;A que la función var() calcula mal el resultado,;A que la población cambia entre cada llamada a sample(),;A que R redondea los resultados de forma aleatoria. 
+  AnswerChoices: A que cada muestra de 40 tiempos de respuesta es distinta, por lo que su dispersión interna también varía.;A que la función var() calcula mal el resultado.;A que la población cambia entre cada llamada a sample().;A que R redondea los resultados de forma aleatoria. 
   CorrectAnswer: A que cada muestra de 40 tiempos de respuesta es distinta, por lo que su dispersión interna también varía. 
   AnswerTests: omnitest(correctVal='A que cada muestra de 40 tiempos de respuesta es distinta, por lo que su dispersión interna también varía.')
   Hint: Piensa en que cada sample() toma valores distintos al azar. 
   
 - Class: text
-  Output: Con esto cerramos el subtema de la varianza muestral, y con él, los tres estadísticos principales que puede tomar una distribución muestral, media, proporción y varianza. En los tres casos vimos el mismo patrón, tomar una muestra, calcular un estadístico, repetir el proceso muchas veces, y observar la variabilidad resultante entre esos estadísticos. 
+  Output: Con esto cerramos el subtema de la varianza muestral, y con él, los tres estadísticos principales que puede tomar una distribución muestral, media, proporción y varianza. 
+  
+#===================================================
+# Actividad de aplicacion
+#===================================================
+
+- Class: text
+  Output: Pongamos en práctica lo aprendido con un caso más realista. Imagina que eres analista de rendimiento y tienes que decidir tú mismo qué estadístico calcular.
+  
+- Class: mult_question
+  Output: Situación 1 - Tu jefe pregunta "¿Qué tan consistente es el servidor C, o varía mucho su tiempo de respuesta entre peticiones?" ¿Qué estadístico calcularías para responder esto?
+  AnswerChoices: Media;Proporción;Varianza
+  CorrectAnswer: Varianza
+  AnswerTests: omnitest(correctVal='Varianza')
+  Hint: Piensa en qué estadístico mide qué tan dispersos están los datos, no su valor típico.
+  
+- Class: cmd_question
+  Output: Toma una muestra de 40 registros de tiempo_ms donde el servidor sea "C" (usa subset() para filtrar primero subset(tiempos_respuesta, servidor == "C")$tiempo_ms, y luego sample() sobre eso), calcula la varianza con var(), y guardala en una variable llamada varianza_servidor_C.
+  CorrectAnswer: varianza_servidor_C <- var(sample(subset(tiempos_respuesta, servidor == "C")$tiempo_ms, 40))
+  AnswerTests: omnitest(correctExpr='varianza_servidor_C <- var(sample(subset(tiempos_respuesta, servidor == "C")$tiempo_ms, 40))')
+  Hint: Primero filtra con subset(), luego aplica sample() al resultado, y finalmente var() a la muestra.
+  
+- Class: cmd_question
+  Output: Escribe varianza_servidor_C para ver el valor obtenido.
+  CorrectAnswer: varianza_servidor_C
+  AnswerTests: omnitest(correctExpr='varianza_servidor_C')
+  Hint: Solo escribe el nombre de la variable. 
+- Class: text
+  Output: Con este valor de varianza ya puedes responder a tu jefe qué tan consistente (o inconsistente) es el servidor C, entre más alta la varianza, más variable es su tiempo de respuesta entre peticiones. 
+  
+- Class: mult_question
+  Output: Situación 2 - Ahora te preguntan "¿Cuál es el tiempo de respuesta típico del sistema completo?" 
+  AnswerChoices: Media;Proporción;Varianza
+  CorrectAnswer: Media
+  AnswerTests: omnitest(correctVal='Media')
+  Hint: Típico suele referirse al valor central de los datos. 
+  
+- Class: cmd_question
+  Output: Toma una muestra de 40 registros de tiempo_ms de toda la poblacion tiempos_respuesta (sin filtrar por servidor esta vez), calcula su media con mean(), y guárdala en una variable llamada media_sistema. 
+  CorrectAnswer: media_sistema <- mean(sample(tiempos_respuesta$tiempo_ms, 40))
+  AnswerTests: omnitest(correctExpr='media_sistema <- mean(sample(tiempos_respuesta$tiempo_ms, 40))')
+  Hint: Usa sample() sobre tiempos_respuesta$tiempo_ms y aplica mean() al resultado. 
+  
+- Class: cmd_question
+  Output: Escribe media_sistema para ver el valor obtenido.
+  CorrectAnswer: media_sistema
+  AnswerTests: omnitest(correctExpr='media_sistema')
+  Hint: Solo escribe el nombre de la variable
+  
+- Class: text
+  Output: Este valor es tu respuesta al tiempo de respuesta típico del sistema completo, sin importar qué servidor atendió cada petición. 
+  
+- Class: mult_question
+  Output: Situación 3 - Finalmente te preguntan "¿Qué porcentaje de las peticiones fueron atendidas por el servidor B?"
+  AnswerChoices: Media;Proporción;Varianza
+  CorrectAnswer: Proporción
+  AnswerTests: omnitest(correctVal='Proporción')
+  Hint: Fíjate en qué tipo de variable es servidor y qué te están pidiendo medir sobre ella. 
+  
+- Class: cmd_question
+  Output: Toma una muestra de 60 registros de la columna servidor, y calcula la proporción que corresponde al servidor "B" usando mean(). Guarda el resultado en una variable llamada proporcion_B.
+  CorrectAnswer: proporcion_B <- mean(sample(tiempos_respuesta$servidor, 60) == "B")
+  AnswerTests: omnitest(correctExpr='proporcion_B <- mean(sample(tiempos_respuesta$servidor, 60) == "B")')
+  Hint: Usa sample() sobre tiempos_respuesta$servidor y compáralo con == "B" dentro de mean().
+  
+- Class: cmd_question
+  Output: Escribe proporcion_B para ver el valor obtenido.
+  CorrectAnswer: proporcion_B
+  AnswerTests: omnitest(correctExpr='proporcion_B')
+  Hint: Solo escribe el nombre de la variable.
+  
+- Class: text
+  Output: Ese valor, multiplicado por 100, te da el porcentaje aproximado de peticiones atendidas por el servidor B, la respuesta directa a la pregunta original.
+  
+- Class: text
+  Output: Como viste, cada pregunta de negocio o de análisis apunta a un estadístico distinto. Reconocer cuál usar es tan importante como saber calcularlo correctamente. 
+  
+#===================================================
+# Cierre de la lección
+#===================================================
+
+- Class: text
+  Output: En esta lección aprendiste qué es una distribución muestral y cómo se diferencia de la distribución de los datos y de la distribución de una sola muestra. Practicaste con los tres estadísticos principales (media, proporción y varianza), viendo en cada caso cómo obtener una muestra, calcular el estadístico, repetir el proceso muchas veces con replicate(), y observar la variabilidad resultante. También viste cómo el tamaño de muestra afecta esa variabilidad. En la siguiente lección aplicarás todo esto en un caso completo de principio a fin. 
+  
+
