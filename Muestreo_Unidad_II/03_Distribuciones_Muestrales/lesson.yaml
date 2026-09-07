@@ -8,39 +8,153 @@
   
 #===================================================
 # Referencias
-# https://www-investopedia-com.translate.goog/terms/s/sampling-distribution.asp?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc
-# https://rpubs.com/mgsaavedraro/1209386
-# https://www-6sigma-us.translate.goog/six-sigma-in-focus/sample-mean/?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc
+# Heckert, N., Filliben, J., Croarkin, C., Hembree, B., Guthrie, W., Tobias, P., & Prinz, J. (2002).
+# NIST/SEMATECH e-Handbook of Statistical Methods. National Institute of Standards and Technology.
+# https://www.nist.gov/programs-projects/nistsematech-engineering-statistics-handbook
 #===================================================
 
 #===================================================
-# Explicacion
+# Explicacion introductoria
 #===================================================
 - Class: text
-  Output: La distribución muestral de una población determinada indica el rango de 
-    resultados posibles según sus estadísticas. Esto permite a entidades como gobiernos 
-    y empresas tomar decisiones mejor fundamentadas a partir de la información recopilada.
-#===================================================
-# Distribucion muestral de la media
-#===================================================
+  Output: En esta lección trabajaremos con datos de tiempos de tiempos de respuesta de un sistema (en milisegundos), simulando el monitoreo del rendimiento de un servidor. Usaremos esta población para entender qué es una distribución muestral. 
+
+- Class: text 
+  Output: Es importante distinguir tres cosas que suenan parecido pero son distintas. La distribución de los datos es cómo se comportan TODOS los valores de la población completa (los 1000 tiempos de respuesta). La distribución de una muestra es cómo se ven los valores dentro de UNA sola muestra que tomamos (por ejemplo, 30 tiempos de respuesta). La distribución muestral de un estadístico es diferente a ambas, se obtiene calculado un estadístico (como la media) en MUCHAS muestras distintas, y viendo cómo se distribuyen esos resultados entre sí. 
+
 - Class: text
-  Output: La distribucion muestral de la media muestra una distribución normal donde el valor central es la media de la 
-    distribución muestral. Por lo tanto, representa la media de la población total. Para llegar a 
-    este punto, el investigador debe calcular la media de cada grupo de muestra y representar gráficamente los datos individuales.
-    
+  Output: Por ejemplo, si tomamos 50 muestras distintas de 30 tiempos de respuesta cada una, y calculamos la media de cada una de esas 50 muestras, obtendremos 50 medias distintas. La forma en que se distribuyen esas 50 medias es la distribución muestral de la media. 
+  
+#===================================================
+# Distribución muestral de la media
+#===================================================
+
 - Class: text
-  Output: La media muestral es el promedio de un conjunto de números extraídos de una población mayor. Es una herramienta fundamental en 
-    estadística que nos ayuda a comprender la tendencia central de los datos
-#===================================================
-# Distribucion muestral de la proporcion
-#===================================================
+  Output: La media muestral es el promedio de los valores dentro de una muestra. Cuando tomamos muchas muestas distintas de la misma población y calculamos la media de cada una, esas medias no son siempre iguales entre sí, mostrando variabilidad. A esa variabilidad la estudia la distribución muestral de la media. 
+  
+- Class: cdm_question
+  Output: Empecemos con una sola muestra. Utiliza la función sample() para tomar 30 tiempos de respuesta de la columna tiempo_ms de la poblacion tiempos_respuesta y guárdalos en una variable llamada muestra_30.
+  CorrectAnswer: muestra_30 <- sample(tiempos_repuesta$tiempo_ms, 30)
+  AnswerTests: omnitest(correctExpr='muestra_30 <- sample(tiempos_repuesta$tiempo_ms, 30)')
+  Hint: Usa sample() con tiempos_respuesta$tiempo_ms como primer argumento y 30 como tamaño de muesta.
+  
+- Class: cmd_question
+  Output: Escribe muestra_30 para ver los 30 valores que obtuviste.
+  CorrectAnswer: muestra_30
+  AnswerTests: omnitest(correctExpr='muestra_30')
+  Hint: Solo escribe el nombre de la variable, sin nada más.
+  
+- Class: cmd_question
+  Output: Ahora calcula la media de esa muestra usando la función mean() y guárdala en una variable llamada media_muestra_30.
+  CorrectAnswer: media_muestra_30 <- mean(muestra_30)
+  AnswerTests: omnitest(correctExpr='media_muestra_30 <- mean(muestra_30)')
+  Hint: Use mean() sobre la variable muestra_30 que acabas de crear.
+
+- Class: cmd_question
+  Output: Escribe media_muestra_30 para ver el valor obtenido.
+  CorrectAnswer: media_muestra_30
+  AnswerTests: omnitest(correctExpr='media_muestra_30')
+  Hint: Solo escribe el nombre de la variable.
+  
 - Class: text
-  Output:  Este método consiste en seleccionar una muestra de la población total para obtener la proporción de la muestra. 
-    La media de las proporciones resultante constituye la proporción del grupo más amplio.
-#===================================================
-# Distribucion muestral de la varianza
-#===================================================
+  Output: Ahora repitamos el proceso muchas veces. La función replicate() nos permite ejecutar la misma operación un número determinado de veces y guardar todos los resultados en un solo vector. Esto es justo lo que necesitamos para construir una distribución muestral. 
+  
+- Class: cmd_question
+  Output: Utiliza replicate() para repetir 200 veces el proceso de tomar una muestra de 30 tiempos de respuesta y calcular su media. Guarda el resultado en una variable llamada medias_muestrales. 
+  CorrectAnswer: medias_muestrales <- replicate(200, mean(sample(tiempos_respuesta$tiempo_ms, 30)))
+  AnswerTests: ominitest(correctExpr='medias_muestrales <- replicate(200, mean(sample(tiempos_respuesta$tiempo_ms, 30)))')
+  Hint: replicate() recibe primero el número de repeticiones, y después la expresión que quieres repetir. 
+  
+- Class: cmd_question
+  Output: Usa head() para ver los primeros valores de medias_muestrales (son 200 en total, no queremos verlas todas).
+  CorrectAnswer: head(medias_muestrales)
+  AnswerTests: omnitest(correctExpr='head(medias_muestrales)')
+  Hint: head() muestra por defecto los primeros 6 valores de un vector.
+  
+- Class: cmd_question
+  Output: Ahora observa la variabilidad de esas 200 medias calculando su desviación estándar con sd().
+  CorrectAnswer: sd(medias_muestrales)
+  AnswerTests: omnitest(correctExpr='sd(medias_muestrales)')
+  Hint: Usa la función sd() sobre el vector medias_muestrales.
+  
+- Class: mult_question
+  Output: Acabas de calcular 200 medias muestrales distintas, cada una basada en una muestra diferente de 30 tiempos de respuesta. ¿Qué representa la variabilidad (desviación estándar) que acabas de calcular?
+  AnswerChoices: La variabilidad de un solo tiempo de respuesta individual.; La variabilidad entre las medias de las distintas muestras tomadas.; El tiempo de respuesta más alto registrado en la población.; El número total de servidores en la población.
+  CorrectAnswer: La variabilidad entre las medias de las distintas muestras tomadas. 
+  AnswerTests: ominitest(correctVal='La variabilidad entre las medias de las distintas muestras tomadas.')
+  Hint: Piensa en qué guardaste dentro del vector medias_muestrales.
+  
 - Class: text
-  Output: La varianza es una medida de dispersión que indica cuánto varían los valores de una muestra o población respecto a la 
-    media. Cuando calculamos la varianza muestral a partir de diferentes muestras de una población, estas varianzas muestrales siguen 
-    una distribución conocida, que nos permite hacer inferencias sobre la varianza poblacional.
+  Output: Un patrón importante en las distribuciones muestrales de la media es que, entre más grande sea el tamaño de cada muestra, menor es la variabilidad entre las medias muestrales. Es decir, muestras más grandes producen medias más consistentes entre sí, más cercanas a la media real de la población. 
+  
+- Class: cmd_question 
+  Output: Comprobemos este patrón. Repite el mismo proceso de replicate(), pero ahora usando muestras de tamaño 100 en vez de 30, y guarda el resultado en una variable llamada medias_muestrales_100.
+  CorrectAnswer: medias_muestrales_100 <- replicate(200, mean(sample(tiempos_respuesta$tiempo_ms, 100)))
+  AnswerTests: omnitest(correctExpr='medias_muestrales_100 <- replicate(200, mean(sample(tiempos_respuesta$tiempo_ms, 100)))')
+  Hint: Es la misma expresión que usaste antes, solo cambia el tamaño de muestra de 30 a 100.
+  
+- Class: mult_question
+  Output: Si comparas sd(medias_muestrales) contra sd(medias_muestrales_100), ¿qué esperarías observar?
+  AnswerChoices: Que sd(medias_muestrales_100) sea menor, porque las muestras más grandes generan medias más consistentes.; Que ambas desviaciones sean siempre idénticas.; Que sd(medias_muestrales_100) sea mayor, porque hay más datos por muestra.; Que la desviación estándar no tenga relación con el tamaño de muestra.
+  CorrectAnswer: Que sd(medias_muestrales_100) sea menor, porque las muestras más grandes generan medias más consistentes. 
+  AnswerTests: omnitest(correctVal='Que sd(medias_muestrales_100) sea menor, porque las muestras más grandes generan medias más consistentes.')
+  Hint: Recuerda el patrón que acabamos de mencionar sobre tamaño de muestra y variabilidad. 
+  
+- Class: text
+  Output: Con esto cerramos el subtema de la media muestra. Vimos cómo obtener una muestra, calcular su media, repetir el proceso muchas veces para construir una distribución muestra,y cómo el tamaño de muestra afecta la variabilidad de esa distribución. 
+  
+#===================================================
+# Distribución muestral de la proporcion
+#===================================================
+
+- Class: text
+  Output: Cuando la variable que nos interesa es categóritca (por ejemplo, qué servidor atendió una petición) en lugar de numérica, no calculamos una media, sino una proporción. La proporción muestral es el porcentaje de elementos de una muestra que cumplen cierta condición. Igual que con la media, si tomamos muchas muestras distintas y calculamos la proporción en cada una, esas proporciones formarán su propia distribución muestral. 
+  
+- Class: cmd_question
+  Output: Toma una muestra de 50 registros de la columna servidor de la poblacion tiempos_respuesta, usando sample(), y guárdala en una variable llamada muestra_servidor. 
+  CorrectAnswer: muestra_servidor <- sample(tiempos_respuesta$servidor, 50)
+  AnswerTests: omnitest(correctExpr='muestra_servidor <- sample(tiempos_respuesta$servidor, 50)')
+  Hint: Usa sample() con tiempos_respuesta$servidor como primero argumento y 50 como tamaño de muestra.
+
+- Class: cmd_question
+  Output: Escribe muestra_servidor para ver los 50 valores que obtuviste.
+  CorrectAnswer: muestra_servidor
+  AnswerTests: omnitest(correctExpr='muestra_servidor')
+  Hint: Solo escribe el nombre de la variable.
+  
+- Class: cmd_question
+  Output: Calcula qué proporción de esa muestra corresponde al servidor "A". Puedes hacerlo con mean(muestra_servidor == "A"), que cuenta cuántos valores cumplen la condición y los divide entre el total. Guarda el resultado en una variable llamada proporcion_A.
+  CorrectAnswer: proporcion_A <- mean(muestra_servidor == "A")
+  AnswerTests: omnitest(correctExpr='proporcion_A <- mean(muestra_servidor == "A")')
+  Hint: mean() sobre una comparación lógica (==) calcula directamente la proporción de valores TRUE.
+  
+- Class: cmd_question
+  Output: Escribe proporcion_A para ver el valor obtenido.
+  CorrectAnswer: proporcion_A
+  AnswerTests: omnitest(correctExpr='proporcion_A')
+  Hint: Solo escribe el nombre de la variable.
+  
+- Class: text
+  Output: Ahora repitamos este proceso muchas veces, igual que hicimos con la media, para observar cómo varia la proporción de un servidor entre distintas muestras. 
+  
+- Class: cmd_question
+  Output: Utiliza replicate() para repetir 200 veces el proceso de tomar una muestra de 50 registros de servidor y calcular la proporción del servidor "A". Guarda el resultado en una variable llamada proporciones_muestrales.
+  CorrectAnswer: proporciones_muestrales <- replicate(200, mean(sample(tiempos_respuesta$servidor, 50) == "A"))
+  AnswerTests: omnitest(correctExpr='proporciones_muestrales <- replicate(200, mean(sample(tiempos_respuesta$servidor, 50) == "A"))')
+  Hint: Es la misma lógica de replicate() que usaste con la media, pero ahora repitiendo el cálculo de proporción. 
+  
+- Class: cmd_question
+  Output: Usa head() para ver los primeros valores de proporciones_muestrales.
+  CorrectAnswer: head(proporciones_muestrales)
+  AnswerTests: omnitest(correctExpr='head(proporciones_muestrales)')
+  Hint: head() muestra por defecto los primeros 6 valores de un vector.
+  
+- Class: mult_question
+  Output: Observas que las 200 proporciones que calculaste no son todas idénticas, sino que varían alrededor de un valor central. ¿Qué representa esa variación?
+  AnswerChoices: Un error en el código, ya que todas las proporciones deberían ser iguales.; La variabilidad natural que existe entre distintas muestras tomadas de la misma población.; Que el servidor A cambia de comportamiento entre muestras.; Que la población original tiene datos incorrectos. 
+  CorrectAnswer: La variabilidad natural que existe entre distintas muestras tomadas de la misma población. 
+  AnswerTests: ominitest(correctVal='La variabilidad natural que existe entre distintas muestras tomadas de la misma población.')
+  Hint: Piensa en que cada muestra fue tomada al azar, y el azar produce diferencias. 
+  
+- Class: text
+  Output: Con esto cerramos el subtema de la proporción muestral. Vimos cómo obtener una muestra de una variable categórica, calcular la proporción de una categoría de interés, repetir el proceso muchas veces, e interpretar la variabilidad resultante entre esas proporciones. 
