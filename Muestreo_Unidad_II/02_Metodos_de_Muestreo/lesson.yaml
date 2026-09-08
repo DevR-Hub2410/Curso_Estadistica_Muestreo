@@ -325,6 +325,12 @@
   AnswerTests: test_muestra_conveniencia()
   Hint: Utiliza subset() y como primer parametro llama a estudiantes y como segundo parametro pon turno == "" y el turno que quieras poner empezando con mayusculas.
   
+- Class: cmd_question
+  Output: Llama a la variable muestra para verificar si la muestra se creo correctamente.
+  CorrectAnswer: muestra
+  AnswerTests: omnitest(correctExpr='muestra')
+  Hint: Utiliza la variable ya creada para ver el resultado.
+  
 - Class: mult_question
   Output: La población tiene 100 estudiantes, pero la muestra por conveniencia contiene únicamente estudiantes del turno matutino. 
     ¿Podemos afirmar que esta muestra representa adecuadamente a toda la población?
@@ -377,6 +383,13 @@
   CorrectAnswer: Muestreo estratificado
   AnswerTests: omnitest(correctVal='Muestreo estratificado')
   Hint: En este método se busca que los diferentes grupos de interés estén representados en la muestra.
+  
+- Class: mult_question
+  Output: Compara las siguientes situaciones. Una universidad está formada por estudiantes de Ingeniería, Administración y Contaduría. ¿Cuál opción describe correctamente la diferencia entre utilizar muestreo estratificado y muestreo por conglomerados?
+  AnswerChoices: En el muestreo estratificado se seleccionan estudiantes de cada carrera, mientras que en el muestreo por conglomerados se selecciona una o varias carreras completas.;En ambos métodos se seleccionan estudiantes de todas las carreras de la misma manera.;En el muestreo estratificado se seleccionan carreras completas y en el de conglomerados estudiantes individuales de cada carrera.;El muestreo por conglomerados selecciona únicamente a los estudiantes disponibles.
+  CorrectAnswer: En el muestreo estratificado se seleccionan estudiantes de cada carrera, mientras que en el muestreo por conglomerados se selecciona una o varias carreras completas.
+  AnswerTests: omnitest(correctVal='En el muestreo estratificado se seleccionan estudiantes de cada carrera, mientras que en el muestreo por conglomerados se selecciona una o varias carreras completas.')
+  Hint: Piensa en qué se selecciona en cada método como individuos de todos los grupos o grupos completos.
   
 - Class: mult_question
   Output: Un investigador desea conocer los hábitos alimenticios de los estudiantes de una universidad. Para obtener los datos, encuesta únicamente 
