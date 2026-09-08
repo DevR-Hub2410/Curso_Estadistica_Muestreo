@@ -6,45 +6,6 @@
   Organization: your organization's name goes here
   Version: 2.4.5
   
-#===================================================
-# Referencias
-#
-# Cristina Ortega. (s.f). Métodos de muestreo: Ejemplos y usos
-# QuestionPro.
-# https://www.questionpro.com/blog/es/metodos-de-muestreo/
-#
-# Universidad Europea. (s.f.). Tipos de muestreo: qué es y cuáles son
-# https://universidadeuropea.com/blog/tipos-de-muestreo/
-#
-# Carlos Ochoa. (s.f). Muestreo aleatorio simple: Definición, características y Ejemplos
-# Netquest
-# https://www.netquest.com/blog/muestreo-probabilistico-muestreo-aleatorio-simple
-#
-# Jesús Mellado. (s.f). Muestreo por Conglomerados
-# Universidad Autónoma Agraria Antonio Narro
-# https://www.uaaan.mx/~jmelbos/muestreo/muapu5
-#
-# Universidad Nacional Autónoma de México. (s.f). Introducción a la estadística
-# https://cc.sisal.unam.mx/Guias/GuiaEstadisticaR.html
-#
-# Carlos Ochoa. (s.f). Muestreo sistemático: qué es, ejemplos y ventajas en investigación
-# Netquest
-# https://www.netquest.com/blog/muestreo-sistematico
-#
-# Carlos Ochoa. (s.f). Muestreo estratificado: una técnica avanzada de muestreo probabilístico
-# Netquest
-# https://www.netquest.com/blog/muestreo-probabilistico-muestreo-estratificado
-#
-# Carlos Ochoa. (s.f). Muestreo por conglomerados explicado fácil paso a paso
-# Netquest
-# https://www.netquest.com/blog/muestreo-probabilistico-muestreo-conglomerados
-#
-# Carlos Ochoa. (s.f). Muestreo por Conveniencia: Qué es, ejemplos y características
-# Netquest
-# https://www.netquest.com/blog/muestreo-por-conveniencia
-#
-#===================================================
-
 - Class: text
   Output: El objetivo de esta lección es conocer y comprender los principales métodos de muestreo, identificando sus características, 
     procedimientos, ventajas y limitaciones utilizando la herramienta R para realizar estos metodos de manera sencilla.
@@ -53,19 +14,17 @@
 # Explicacion
 #===================================================
 - Class: text
-  Output: El muestreo de probabilidad es una técnica de muestreo en la que los investigadores 
-    eligen muestras de una población más grande utilizando un método basado en la teoría de la 
-    probabilidad. Este es uno de los métodos de muestreo que considera a todos los miembros de la 
-    población y forma muestras basadas en un proceso fijo. Existen 4 metodos de muestreo.
+  Output: El muestreo probabilístico agrupa a los métodos de muestreo que se basan en la teoría de la probabilidad para seleccionar elementos de una población (Ortega, s.f.). En estos métodos, todos los miembros de la población tienen alguna posibilidad conocida de ser elegidos, siguiendo un proceso definido. Existen 4 métodos de muestreo.
     
 
 #===================================================
 # Muestreo aleatorio simple
 #===================================================
 - Class: text
-  Output: El muestreo aleatorio simple es un método fiable de obtención de información en el que cada uno de los miembros de una 
-    población se elige al azar, simplemente por casualidad. Cada individuo tiene la misma probabilidad 
-    de ser elegido para formar parte de una muestra.
+  Output: El muestreo aleatorio simple consiste en seleccionar a cada miembro de una población de forma completamente al azar, dando a todos la misma oportunidad de formar parte de la muestra (Ortega, s.f.).
+  
+# Ortega, C. (s.f.). Métodos de muestreo: Ejemplos y usos. QuestionPro.
+# https://www.questionpro.com/blog/es/metodos-de-muestreo/
     
 - Class: text
   Output: Para aplicar este tipo de muestreo se suele aplicar cuando tienes acceso a una poblacion completa, y que la poblacion sea 
@@ -84,8 +43,7 @@
   Hint: Recuerda que el metodo selecciona elementos aleatorios.
   
 - Class: text
-  Output: Un ejemplo sobre este metodo, Una escuela tiene 500 alumnos y quieren encuestar a 50. Se numeran los 500 alumnos y se elige los 50 alumnos al azar, 
-    esos 50 alumnos forman parte de la muestra.
+  Output: Un ejemplo sobre este metodo, en una escuela con 500 alumnos, si se desea encuestar a 50 de ellos, se numera a los 500 estudiantes y se eligen 50 al azar, esos 50 conforman la muestra (Ochoa, s.f.).
     
 - Class: cmd_question
   Output: Del ejemplo anterior. Selecciona una muestra aleatoria de 10 estudiantes utlizando el identificador id.
@@ -101,15 +59,21 @@
   Hint: Recuerda que el metodo selecciona elementos aleatorios.
   
 - Class: text
-  Output: En conclusion el muestreo aleatorio simple es una técnica fundamental para entender a grandes grupos de personas sin tener que analizarlos a todos. Su principal 
-    ventaja es la igualdad de oportunidades en la selección, lo que garantiza resultados más objetivos. Sin embargo, su correcta aplicación depende de un 
-    elemento clave, disponer de un buen listado de la población. Sin esto, incluso el mejor método puede fallar.
+  Output: En conclusion, el muestreo aleatorio simple es una herramienta clave para estudiar grandes poblaciones sin necesidad de analizar a cada individuo (Ochoa, s.f.). Su fortaleza está en dar a todos las mismas oportunidades de selección, lo que produce resultados más objetivos, pero depende por completo de contar con un listado confiable de toda la población. 
+  
+# Ortega, C. (s.f.). Métodos de muestreo: Ejemplos y usos. QuestionPro.
+# https://www.questionpro.com/blog/es/metodos-de-muestreo/
+# Ochoa, C. (s.f.). Muestreo aleatorio simple: Definición, características y ejemplos. Netquest.
+# https://www.netquest.com/blog/muestreo-probabilistico-muestreo-aleatorio-simple
+
 #===================================================
 # Muestreo sistematico
 #===================================================
 - Class: text
-  Output: El muestreo sistemático es un proceso muy simple y que sólo requiere la elección de un individuo al azar. El resto del proceso es trivial y rápido. 
-    Los resultados que obtenemos son representativos de la población, de forma similar al muestreo aleatorio simple.
+  Output: El muestreo sistemático es un método sencillo, ya que solo requiere elegir un primer elemento al azar; el resto del proceso sigue un patrón fijo y rápido de aplicar (Universidad Nacional Autónoma de México, s.f.). A pesar de su simplicidad, produce muestras representativas, de forma similar al muestreo aleatorio simple.
+  
+# Universidad Nacional Autónoma de México. (s.f). Introducción a la estadística
+# https://cc.sisal.unam.mx/Guias/GuiaEstadisticaR.html
 
 - Class: text
   Output: El intervalo de selección, también llamado intervalo de muestreo, indica cada cuántos elementos de la población se 
@@ -181,27 +145,28 @@
   Hint: Comienza en A y suma el intervalo k en cada selección.
   
 - Class: text
-  Output: En conclusion el muestreo sistemático es una técnica sencilla, rápida y muy útil para seleccionar muestras en grandes poblaciones. Su principal 
-    ventaja es la eficiencia, pero también tiene un riesgo importante, si existe un patrón oculto en la población, los resultados pueden verse afectados.
-    Por eso, antes de aplicarlo, es clave entender bien cómo está organizada la información.
+  Output: En conclusion, el muestreo sistemático es un método sencillo y eficiente para trabajar con poblaciones grandes (Ochoa, s.f.). Su ventaja principal es la rapidez, pero también conlleva un riesgo, si la población tiene algún patrón oculto u orden periódico, los resultados pueden salir sesgados. Por eso conviene entender bien cómo está organizada la información antes de aplicarlo. 
+  
+# Ochoa, C. (s.f.). Muestreo sistemático: qué es, ejemplos y ventajas en investigación. Netquest.
+# https://www.netquest.com/blog/muestreo-sistematico
+
 #===================================================
 # Muestreo estratificado
 #===================================================
-# Investigar!
+
 - Class: text
-  Output: El muestreo estraificado es un método en el que el investigador divide la población en grupos más pequeños que no se 
+  Output: El muestreo estratificado es un método en el que el investigador divide la población en grupos más pequeños que no se 
     superponen, sino que representan a toda la población. Durante el muestreo, estos grupos pueden organizarse 
     y luego extraer una muestra de cada grupo por separado.
     
 - Class: text
-  Output: En este muestreo hace uso de los estratos, los estratos son categorias que poseen una gran homogeneidad respecto a 
-    alguna caracteristica, por ejemplo, se puede usar la profesión, el municipio de residencia, el sexo, el estado civil, etc.
+  Output: En este muestreo hace uso de los estratos, un estrato es un grupo dentro de la población cuyos miembros comparten una característica en común que los hace relativamente homogéneos entre sí (UNAM Sisal, s.f.). Algunos criterios típicos para formar estratos son la profesión, el municipio de residencia, el sexo o el estado civil.
     
 - Class: text
-  Output: La razon por la que se dividen en estratos es que, los estratos de interés estarán representados adecuadamente en la 
-    muestra. De esta manera, en lugar de seleccionar elementos sin considerar los grupos a los que pertenecen, se obtiene una muestra de los
-    diferentes estratos de la población. Cada estrato funciona independientemente, pudiendo aplicarse dentro de ellos el muestreo aleatorio 
-    simple o el estratificado para elegir los elementos concretos que formarán parte de la muestra. Es utilizado cuando tenemos grupos homogéneos.
+  Output: La razón por la que se dividen en estratos es asegurar que los grupos de interés queden bien representados dentro de la muestra final (Universidad Nacional Autónoma de México, s.f.). Cada estrato se trabaja de forma independiente, y dentro de cada uno se puede aplicar muestreo aleatorio simple para elegir a sus elementos concretos. Este método se usa cuando la población puede dividirse en grupos homogéneos.
+  
+# Universidad Nacional Autónoma de México. (s.f). Introducción a la estadística
+# https://cc.sisal.unam.mx/Guias/GuiaEstadisticaR.html
     
 - Class: text
   Output: Por ejemplo, si una universidad tiene estudiantes de Ingeniería, Administración y Contaduría, estas carreras pueden utilizarse 
@@ -241,8 +206,11 @@
   Hint: Recuerda cuál es el objetivo principal de dividir la población en estratos.
   
 - Class: text
-  Output: En conclusion el muestreo estratificado es una técnica que nos permite reducir el error en nuestras estimaciones siempre y cuando 
-    tengamos cierta información a priori sobre la existencia de grupos homogéneos en la población.
+  Output: En conclusion, el muestreo estratificado ayuda a reducir el error en nuestras estimaciones siempre que contemos con información previa sobre la existencia de grupos homogéneos dentro de la población (Ochoa, s.f.).
+  
+# Ochoa, C. (s.f.). Muestreo estratificado: una técnica avanzada de muestreo probabilístico. Netquest.
+# https://www.netquest.com/blog/muestreo-probabilistico-muestreo-estratificado
+
 #===================================================
 # Muestreo por conglomerados
 #===================================================
@@ -258,11 +226,18 @@
     
 - Class: text
   Output: Para la seleccion de los conglomerados primero se identifican los conglomerados de la poblacion, si los conglomerados son evidentes, se sigue un 
-    proceso aleatorio para su selección, para luego analizar los elementos recolectados 
+    proceso aleatorio para su selección, para luego analizar los elementos recolectados.
     
 - Class: text
-  Output: La diferencia entre los estratos y conglomerados son en como se seleccionan los elementos de los grupos. Los estratos selecciona los individuos 
-    de cada grupo divido de la poblacion manualmente el conglomerado selecciona a varios grupos en vez de a los individuos.
+  Output: Los conglomerados suelen formarse de manera natural por cercanía física, como los vecinos de una misma colonia o los trabajadores de una misma línea de producción, lo cual permite ahorrar costos de traslado al encuestar a un elemento y a quienes están a su alrededor. A diferencia del muestreo estratificado, el muestreo por conglomerados no requiere que los elementos dentro de cada grupo compartan características homogéneas (Mellado, s.f.).
+
+# Jesús Mellado. (s.f). Muestreo por Conglomerados
+# Universidad Autónoma Agraria Antonio Narro
+# https://www.uaaan.mx/~jmelbos/muestreo/muapu5
+    
+- Class: text
+  Output: La diferencia entre los estratos y conglomerados son en como se seleccionan los elementos de los grupos. Los estratos selecciona los individuos de cada grupo divido de la poblacion manualmente el conglomerado selecciona a varios grupos en vez de a los individuos.
+
     
 - Class: mult_question
   Output: Veamos estas situaciones. En una universidad tiene 20 grupos de estudiantes. Cada grupo tiene estudiantes que toman clases juntos. Si se seleccionan algunos grupos 
@@ -308,24 +283,25 @@
   Hint: Recuerda que en este método se seleccionan grupos, no individuos directamente.
   
 - Class: text
-  Output: El muestreo por conglomerados es una técnica clave cuando se trabaja con grandes poblaciones y recursos limitados. Su principal ventaja 
-    es la eficiencia, permite recoger datos de forma más rápida y económica. Sin embargo, también implica un reto importante, elegir bien los conglomerados.
+  Output: El muestreo por conglomerados resulta especialmente útil cuando se trabaja con poblaciones grandes y recursos limitados, ya que permite recolectar datos de forma más rápida y económica (Ochoa, s.f.). El reto principal está en elegir bien qué conglomerados incluir, ya que de eso depende qué tan bien representen a la población completa. 
+  
+# Ochoa, C. (s.f.). Muestreo por conglomerados explicado fácil paso a paso. Netquest.
+# https://www.netquest.com/blog/muestreo-probabilistico-muestreo-conglomerados
+
 #===================================================
 # Muestreo por conveniencia
 #===================================================
 - Class: text
-  Output: El muestreo por conveniencia es un método de muestreo no probabilístico donde los participantes son seleccionados basados en la accesibilidad y la 
-    conveniencia para el investigador. Este método se utiliza a menudo en investigaciones exploratorias y estudios piloto debido a su facilidad y rapidez de implementación.
+  Output: El muestreo por conveniencia selecciona participantes según qué tan fácil sea acceder a ellos, en lugar de usar un proceso aleatorio (Ochoa, s.f.). Por su rapidez, se usa mucho en estudios exploratorios o pilotos, donde se necesita una primera aproximación sin invertir demasiados recursos.
+
+- Class: text
+  Output: Por ejemplo, si alguien investiga hábitos alimenticios, podría optar por encuestar a los estudiantes que encuentra en la cafetería del campus, simplemente porque están ahí y son fáciles de abordar (Ochoa, s.f.).
+
+- Class: text
+  Output: Entre sus ventajas están el ahorro de tiempo y dinero frente a otros métodos, además de ser útil en etapas exploratorias de una investigación. Su principal debilidad es que, al no haber aleatoriedad en la selección, los resultados pueden salir sesgados y no representar bien a toda la población, ya que todo depende de quién estuvo disponible en ese momento.
   
-- Class: text
-  Output: Un ejemplo de este metodo, un investigador que realiza un estudio sobre hábitos alimenticios podría seleccionar a estudiantes universitarios que 
-    se encuentran en la cafetería del campus porque son fácilmente accesibles.
-    
-- Class: text
-  Output: Las principales ventajas del muestreo por convenencia son, es facil y rapido llevar a cabo, requiere menos recursos en comparacion con otros metodos de 
-    muestreo y es util para estudios preliminares y exploratorios. Sus principales Desventajas son, los resultados pueden estar sesgados debido a la falta 
-    de aleatoriedad, los hallazgos pueden no ser representativos de la poblacion total y depende de la disponibilidad de los participantes, lo que puede introducir 
-    sesgos adicionales.
+# Ochoa, C. (s.f.). Muestreo por Conveniencia: Qué es, ejemplos y características. Netquest.
+# https://www.netquest.com/blog/muestreo-por-conveniencia
     
 - Class: text
   Output: Una de las principales limitaciones del muestreo por conveniencia es que los participantes no se seleccionan aleatoriamente. Por esta razón, algunos

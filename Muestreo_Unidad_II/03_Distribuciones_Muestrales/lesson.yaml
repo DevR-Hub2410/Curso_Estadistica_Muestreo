@@ -5,14 +5,6 @@
   Type: Standard
   Organization: your organization's name goes here
   Version: 2.4.5
-  
-#===================================================
-# Referencias
-# Heckert, N., Filliben, J., Croarkin, C., Hembree, B., Guthrie, W., Tobias, P., & Prinz, J. (2002).
-# NIST/SEMATECH e-Handbook of Statistical Methods. National Institute of Standards and Technology.
-# https://www.nist.gov/programs-projects/nistsematech-engineering-statistics-handbook
-# Newbold, P., Carlson, W. L., & Thorne, B. M. (2008). Estadística para administración y economía (6.ª ed.). Pearson Educación.
-#===================================================
 
 #===================================================
 # Explicacion introductoria
@@ -21,7 +13,10 @@
   Output: En esta lección trabajaremos con datos de tiempos de respuesta de un sistema (en milisegundos), simulando el monitoreo del rendimiento de un servidor. Usaremos esta población para entender qué es una distribución muestral. 
 
 - Class: text 
-  Output: Es importante distinguir tres cosas que suenan parecido pero son distintas. La distribución de los datos es cómo se comportan TODOS los valores de la población completa (los 1000 tiempos de respuesta). La distribución de una muestra es cómo se ven los valores dentro de UNA sola muestra que tomamos (por ejemplo, 30 tiempos de respuesta). La distribución muestral de un estadístico es diferente a ambas, se obtiene calculado un estadístico (como la media) en MUCHAS muestras distintas, y viendo cómo se distribuyen esos resultados entre sí. 
+  Output: Es importante distinguir tres cosas que suenan parecido pero son distintas. (NIST/SEMATECH, 2002). La distribución de los datos es cómo se comportan TODOS los valores de la población completa (los 1000 tiempos de respuesta). La distribución de una muestra es cómo se ven los valores dentro de UNA sola muestra que tomamos (por ejemplo, 30 tiempos de respuesta). La distribución muestral de un estadístico es diferente a ambas, se obtiene calculado un estadístico (como la media) en MUCHAS muestras distintas, y viendo cómo se distribuyen esos resultados entre sí. 
+  
+# NIST/SEMATECH e-Handbook of Statistical Methods. National Institute of Standards and Technology.
+# https://www.nist.gov/programs-projects/nistsematech-engineering-statistics-handbook
 
 - Class: text
   Output: Por ejemplo, si tomamos 50 muestras distintas de 30 tiempos de respuesta cada una, y calculamos la media de cada una de esas 50 muestras, obtendremos 50 medias distintas. La forma en que se distribuyen esas 50 medias es la distribución muestral de la media. 
@@ -31,7 +26,9 @@
 #===================================================
 
 - Class: text
-  Output: La media muestral es el promedio de los valores dentro de una muestra. Cuando tomamos muchas muestras distintas de la misma población y calculamos la media de cada una, esas medias no son siempre iguales entre sí, mostrando variabilidad. A esa variabilidad la estudia la distribución muestral de la media. 
+  Output: La media muestral es el promedio de los valores dentro de una muestra (Newbold et al., 2008). Cuando tomamos muchas muestras distintas de la misma población y calculamos la media de cada una, esas medias no son siempre iguales entre sí, mostrando variabilidad. A esa variabilidad la estudia la distribución muestral de la media. 
+  
+# Newbold, P., Carlson, W. L., & Thorne, B. M. (2008). Estadística para administración y economía (6.ª ed.). Pearson Educación.
   
 - Class: cmd_question
   Output: Empecemos con una sola muestra. Utiliza la función sample() para tomar 30 tiempos de respuesta de la columna tiempo_ms de la poblacion tiempos_respuesta y guárdalos en una variable llamada muestra_30.
@@ -86,7 +83,9 @@
   Hint: Piensa en qué guardaste dentro del vector medias_muestrales.
   
 - Class: text
-  Output: Un patrón importante en las distribuciones muestrales de la media es que, entre más grande sea el tamaño de cada muestra, menor es la variabilidad entre las medias muestrales. Es decir, muestras más grandes producen medias más consistentes entre sí, más cercanas a la media real de la población. 
+  Output: Un patrón importante en las distribuciones muestrales de la media es que, entre más grande sea el tamaño de cada muestra, menor es la variabilidad entre las medias muestrales (Newbold et al., 2008).. Es decir, muestras más grandes producen medias más consistentes entre sí, más cercanas a la media real de la población.
+  
+# Newbold, P., Carlson, W. L., & Thorne, B. M. (2008). Estadística para administración y economía (6.ª ed.). Pearson Educación.
   
 - Class: cmd_question 
   Output: Comprobemos este patrón. Repite el mismo proceso de replicate(), pero ahora usando muestras de tamaño 100 en vez de 30, y guarda el resultado en una variable llamada medias_muestrales_100.
@@ -119,8 +118,10 @@
 #===================================================
 
 - Class: text
-  Output: Cuando la variable que nos interesa es categórica (por ejemplo, qué servidor atendió una petición) en lugar de numérica, no calculamos una media, sino una proporción. La proporción muestral es el porcentaje de elementos de una muestra que cumplen cierta condición. Igual que con la media, si tomamos muchas muestras distintas y calculamos la proporción en cada una, esas proporciones formarán su propia distribución muestral. 
+  Output: Cuando la variable que nos interesa es categórica (por ejemplo, qué servidor atendió una petición) en lugar de numérica, no calculamos una media, sino una proporción (Newbold et al., 2008). La proporción muestral es el porcentaje de elementos de una muestra que cumplen cierta condición. Igual que con la media, si tomamos muchas muestras distintas y calculamos la proporción en cada una, esas proporciones formarán su propia distribución muestral. 
   
+# Newbold, P., Carlson, W. L., & Thorne, B. M. (2008). Estadística para administración y economía (6.ª ed.). Pearson Educación.
+
 - Class: cmd_question
   Output: Toma una muestra de 50 registros de la columna servidor de la poblacion tiempos_respuesta, usando sample(), y guárdala en una variable llamada muestra_servidor. 
   CorrectAnswer: muestra_servidor <- sample(tiempos_respuesta$servidor, 50)
@@ -175,8 +176,10 @@
 #===================================================
 
 - Class: text
-  Output: La varianza es una medida de dispersión que indica qué tan alejados están los valores respecto a la media. Al igual que con la media y la proporción, si tomamos muchas muestras distintas de la misma población y calculamos la varianza de cada una, esas varianzas también forman su propia distribución muestral. 
+  Output: La varianza es una medida de dispersión que indica qué tan alejados están los valores respecto a la media (Newbold et al., 2008). Al igual que con la media y la proporción, si tomamos muchas muestras distintas de la misma población y calculamos la varianza de cada una, esas varianzas también forman su propia distribución muestral. 
   
+# Newbold, P., Carlson, W. L., & Thorne, B. M. (2008). Estadística para administración y economía (6.ª ed.). Pearson Educación.
+
 - Class: cmd_question
   Output: Toma una muestra de 40 tiempos de respuesta de tiempos_respuesta$tiempo_ms usando sample(), y guárdala en una variable llamada muestra_var.
   CorrectAnswer: muestra_var <- sample(tiempos_respuesta$tiempo_ms, 40)

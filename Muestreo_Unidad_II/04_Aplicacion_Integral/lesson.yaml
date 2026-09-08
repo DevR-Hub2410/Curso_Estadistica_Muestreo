@@ -6,6 +6,7 @@
   Organization: your organization's name goes here
   Version: 2.4.5
 
+
 - Class: text
   Output: En esta lección aplicarás todo lo aprendido en un problema completo, de principio a fin. Trabajas en el equipo de producto de una app. La empresa quiere conocer el nivel de satisfacción general de sus usuarios, medido en una escala de 1 al 10. 
   
@@ -27,7 +28,7 @@
   Hint: Relee el objetivo que planteó la empresa al inicio del problema.
   
 - Class: text
-  Output: Antes de tomar una muestra, hay que decidir qué método de muestreo usar. Recuerda que el plan Gratuito representa el 70% de los usuarios y el plan Premium solo el 30%. Si tomamos una muestra completamente al azar sin cuidado, podríamos terminar con muy pocos usuarios Premium representados, o incluso ninguno. 
+  Output: Antes de tomar una muestra, hay que decidir qué método de muestreo usar. Recuerda que el plan Gratuito representa el 70% de los usuarios y el plan Premium solo el 30%. Si tomamos una muestra completamente al azar sin cuidado, podríamos terminar con muy pocos usuarios Premium representados, o incluso ninguno, un riesgo real de sesgo que la literatura estadística documenta bien (Newbold et al., 2008).. 
   
 - Class: mult_question 
   Output: Dado este riesgo, ¿qué método de muestreo sería más apropiado para asegurar que ambos tipos de plan estén representados de forma proporcional?
@@ -152,7 +153,51 @@
   CorrectAnswer: Podrías haber obtenido una muestra con muy pocos usuarios Premium, sesgando la estimación hacia la opinión del grupo Gratuito.
   AnswerTests: omnitest(correctVal='Podrías haber obtenido una muestra con muy pocos usuarios Premium, sesgando la estimación hacia la opinión del grupo Gratuito.')
   Hint: Recuerda el motivo original por el que elegiste estratificado en vez de aleatorio simple. 
-  
+
+#===================================================
+# Referencias del curso completo
+#===================================================
+- Class: text
+  Output: A lo largo de este curso se utilizaron las siguientes fuentes académicas y técnicas.
+
+- Class: text
+  Output: Heckert, N., Filliben, J., Croarkin, C., Hembree, B., Guthrie, W., Tobias, P., & Prinz, J.
+    (2002). NIST/SEMATECH e-Handbook of Statistical Methods. National Institute of Standards and
+    Technology. https://www.nist.gov/programs-projects/nistsematech-engineering-statistics-handbook
+
+    Mellado, J. (s.f.). Muestreo por conglomerados. Universidad Autónoma Agraria Antonio Narro.
+    https://www.uaaan.mx/~jmelbos/muestreo/muapu5
+
+    Newbold, P., Carlson, W. L., & Thorne, B. M. (2008). Estadística para administración y economía
+    (6.ª ed.). Pearson Educación.
+
+    Ochoa, C. (s.f.). Muestreo aleatorio simple. Definición, características y ejemplos. Netquest.
+    https://www.netquest.com/blog/muestreo-probabilistico-muestreo-aleatorio-simple
+
+    Ochoa, C. (s.f.). Muestreo estratificado. una técnica avanzada de muestreo probabilístico. Netquest.
+    https://www.netquest.com/blog/muestreo-probabilistico-muestreo-estratificado
+
+    Ochoa, C. (s.f.). Muestreo sistemático. qué es, ejemplos y ventajas en investigación. Netquest.
+    https://www.netquest.com/blog/muestreo-sistematico
+
+    Ochoa, C. (s.f.). Muestreo por conglomerados explicado fácil paso a paso. Netquest.
+    https://www.netquest.com/blog/muestreo-probabilistico-muestreo-conglomerados
+
+    Ochoa, C. (s.f.). Muestreo por Conveniencia. Qué es, ejemplos y características. Netquest.
+    https://www.netquest.com/blog/muestreo-por-conveniencia
+
+    Ortega, C. (s.f.). Métodos de muestreo. Ejemplos y usos. QuestionPro.
+    https://www.questionpro.com/blog/es/metodos-de-muestreo/
+
+    Otzen, T., & Manterola, C. (2017). Técnicas de muestreo sobre una población a estudio.
+    International Journal of Morphology, 35(1), 227-232.
+    https://scielo.conicyt.cl/pdf/ijmorphol/v35n1/art37.pdf
+
+    UNAM Sisal. (s.f.). Introducción a la estadística. https://cc.sisal.unam.mx/Guias/GuiaEstadisticaR.html
+
+    Universidad de Valencia. (s.f.). Introducción a la inferencia estadística. Universitat de València.
+    https://www.uv.es/webgid/Inferencial/21_introduccin.html
+    
 #===================================================
 # Cierre de la lección
 #===================================================

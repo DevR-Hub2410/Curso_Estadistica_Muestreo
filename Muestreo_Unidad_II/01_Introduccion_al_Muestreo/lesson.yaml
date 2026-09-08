@@ -6,21 +6,6 @@
   Organization: your organization's name goes here
   Version: 2.4.5
   
-#===================================================
-# Referencias
-# Universidad de Valencia. (s.f.). Introducción a la inferencia estadística.
-# Universitat de València.
-# https://www.uv.es/webgid/Inferencial/21_introduccin.html
-#
-# [Tamara Otzen, Carlos Manterola]. (2017). [Técnicas de Muestreo sobre una Población a Estudio].
-# International Journal of Morphology, 35(1).
-# https://scielo.conicyt.cl/pdf/ijmorphol/v35n1/art37.pdf
-#
-# Instituto Tecnologico de Chihuahua (s.f.).
-# Unidad I: Teoría del muestreo.
-# https://virtual.uptc.edu.co/ova/estadistica/docs/libros/estadistica1/cap01.html
-#===================================================
-
 - Class: text
   Output: El objetivo de esta lección es comprender los conceptos fundamentales del muestreo, identificando qué es una población, 
     una muestra, la representatividad y el error de muestreo. Además, se busca que el alumno conozca el uso básico de las funciones 
@@ -30,26 +15,25 @@
 # Explicacion
 #===================================================
 - Class: text
-  Output: Se denomina muestreo al proceso por el que generamos las muestras. Una muestra es
-    una parte de la población, y se desea que la muestra sea lo más representativa posible de la 
-    población de la que procede. Esto significa que su tendencia central, variabilidad, etc., 
-    aproximarán las de la población, pero habrá cierta diferencia, que interesa sea lo menor posible.
+  Output: El muestreo es el proceso mediante el cual seleccionamos una muestra a partir de una población más grande (Universidad de Valencia, s.f.). Se busca que esa muestra refleje lo mejor posible las características de la población de origen, su tendencia central, su variabilidad, etc., aunque siempre existirá cierta diferencia entre ambas que conviene mantener lo más pequeña posible.
     
 - Class: text
   Output: En el muestreo existe un concepto clave que ayuda a entender el motivo de las muestras "la poblacion".
-    Una población es un conjunto completo de individuos u objetos que comparten características similares. La 
+    Una población es un conjunto completo de individuos u objetos que comparten características similares (Universidad de Valencia, s.f.). La 
     población puede comprender una nación o un grupo de personas u objetos con una característica común. 
-    Incluye a todo el grupo bien definido sobre el que cualquier investigación quiere extraer conclusiones. Entonces, 
-    el muestreo tiene por objetivo estudiar las relaciones existentes entre la distribución de una variable “y” en una 
-    población “z” y las distribución de ésta variable en la muestra a estudio
+    Incluye a todo el grupo bien definido sobre el que cualquier investigación quiere extraer conclusiones. 
+  
+# Universidad de Valencia. (s.f.). Introducción a la inferencia estadística. Universitat de València.
+# https://www.uv.es/webgid/Inferencial/21_introduccin.html
 
 - Class: text
-  Output: La representatividad de una muestra, permite extrapolar y por ende generalizar los resultados observados en ésta,
-    a la población accesible, y a partir de ésta, a la población blanco. Por ende, una muestra será representativa o no; sólo si fue seleccionada
-    al azar, es decir, que todos los sujetos de la población blanco tuvieron la misma posibilidad de ser seleccionados en esta muestra y por
-    ende ser incluidos en el estudio; y por otro lado, que el número de sujetos seleccionados representen numéricamente a la población que
-    le dio origen respecto de la distribución de la variable en estudio en la población, es decir, la estimación o cálculo del tamaño de la
-    muestra.
+  Output: Además, el propósito central del muestreo es entender cómo se relaciona la distribución de una variable dentro de la población completa con la distribución de esa misma variable dentro de la muestra que se seleccionó (Otzen & Manterola, 2017).
+
+- Class: text
+  Output: Para que una muestra sea representativa, debe cumplir dos condiciones, que la selección haya sido al azar, dando a cada individuo de la población la misma posibilidad de ser elegido, y que el número de personas seleccionadas sea suficiente para reflejar numéricamente a la población de origen (Otzen & Manterola, 2017). Cuando una muestra cumple esto, es posible generalizar sus resultados de vuelta hacia la población completa con un margen de error calculable.
+
+# Otzen, T., & Manterola, C. (2017). Técnicas de muestreo sobre una población a estudio.
+# International Journal of Morphology, 35(1), 227-232. https://scielo.conicyt.cl/pdf/ijmorphol/v35n1/art37.pdf  
     
 - Class: mult_question
   Output: Una empresa tiene 1,000 empleados, de los cuales 500 trabajan en el turno matutino y 500 en el turno nocturno. Para conocer la satisfacción de todos los empleados se seleccionan únicamente 100 trabajadores del turno matutino. ¿Cuál es el principal problema con esta muestra?
@@ -59,12 +43,11 @@
   Hint: Piensa si todos los grupos importantes de la población están representados en la muestra.
     
 - Class: text
-  Output: Otro concepto importante de el muestreo es el error de muestreo, El error muestral se refiere a la variación 
-    natural existente entre muestras tomadas de la misma población. Cuando una muestra no es una copias exacta de la 
-    población; aún si se ha tenido gran cuidado para asegurar que dos muestras del mismo tamaño sean representativas de una 
-    cierta población, no esperaríamos que las dos sean idénticas en todos sus detalles. El error muestral es un concepto importante 
-    que ayudará a entender mejor la naturaleza de la estadística inferencial.
-    
+  Output: Otro concepto importante del muestreo es el error muestral, que se refiere a la variación natural que existe entre distintas muestras tomadas de una misma población (Newbold et al., 2008). Aunque se tenga mucho cuidado al seleccionar dos muestras del mismo tamaño de una población, es normal que no resulten idénticas entre sí. Entender este concepto es clave para comprender la estadística inferencial más adelante. 
+
+# Newbold, P., Carlson, W. L., & Thorne, B. M. (2008). Estadística para administración y economía
+# (6.ª ed.). Pearson Educación.
+
 - Class: text
   Output: Un ejemplo que explica mejor el muestreo. Sea un curso con 40 estudiantes, queremos conocer la Media 
     de las puntuaciones del curso, pero por diversas razones no tenemos acceso a todos los datos, supongamos que 
@@ -78,7 +61,7 @@
   Hint: Recuerda el concepto clave de la poblacion.
   
 - Class: exact_question
-  Output: De la pregunta anerior ¿Cual es la muestra?
+  Output: De la pregunta anterior ¿Cual es la muestra?
   CorrectAnswer: 500
   AnswerTests: omnitest(correctVal = 500)
   Hint: Una parte de la poblacion.
