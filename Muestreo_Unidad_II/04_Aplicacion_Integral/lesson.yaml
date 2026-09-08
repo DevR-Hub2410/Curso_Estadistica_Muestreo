@@ -6,15 +6,161 @@
   Organization: your organization's name goes here
   Version: 2.4.5
 
-#================Paginas a tomar en cuenta=================================
-# Distribuciones
-# https://rpubs.com/mgsaavedraro/1209372
-# https://rpubs.com/mgsaavedraro/1209377
-#
-# Metodos de muestreo
-# https://rpubs.com/juandavid95/1112608
-# https://rpubs.com/luis_bolanos/msist
-# https://rpubs.com/DerminSarmiento/1365678
-# https://rpubs.com/RicardoNarvaz/DraftMuestreoConglomerados
-# https://rpubs.com/danielovalle/1112442
+- Class: text
+  Output: En esta lección aplicarás todo lo aprendido en un problema completo, de principio a fin. Trabajas en el equipo de producto de una app. La empresa quiere conocer el nivel de satisfacción general de sus usuarios, medido en una escala de 1 al 10. 
+  
+- Class: text
+  Output: La población con la que trabajaremos es usuarios_app, con 800 usuarios registrados. Cada usuario tiene una región, un tipo de plan (Gratuito o Premium), y una calificación de satisfacción.
+  
+- Class: mult_question
+  Output: Antes de tomar cualquier muestra, identifiquemos la población y el objetivo. ¿Cuál es la población en este problema?
+  AnswerChoices: Los 800 usuarios registrados en usuarios_app;Solo los usuarios del plan Premium;Solo los usuarios de la region Norte;Los desarrolladores de la app
+  CorrectAnswer: Los 800 usuarios registrados en usuarios_app
+  AnswerTests: omnitest(correctVal='Los 800 usuarios registrados en usuarios_app')
+  Hint: La población es el conjunto completo sobre el que se quiere investigar. 
+  
+- Class: mult_question
+  Output: ¿Qué información específica se desea obtener de esta población?
+  AnswerChoices: El nivel de satisfacción general de los usuarios;El número total de usuarios registrados;La región con más usuarios;El nombre de los desarrolladores de la app
+  CorrectAnswer: El nivel de satisfacción general de los usuarios
+  AnswerTests: omnitest(correctVal='El nivel de satisfacción general de los usuarios')
+  Hint: Relee el objetivo que planteó la empresa al inicio del problema.
+  
+- Class: text
+  Output: Antes de tomar una muestra, hay que decidir qué método de muestreo usar. Recuerda que el plan Gratuito representa el 70% de los usuarios y el plan Premium solo el 30%. Si tomamos una muestra completamente al azar sin cuidado, podríamos terminar con muy pocos usuarios Premium representados, o incluso ninguno. 
+  
+- Class: mult_question 
+  Output: Dado este riesgo, ¿qué método de muestreo sería más apropiado para asegurar que ambos tipos de plan estén representados de forma proporcional?
+  AnswerChoices: Muestreo aleatorio simple;Muestreo estratificado por plan;Muestreo por conveniencia;Muestreo sistemático
+  CorrectAnswer: Muestreo estratificado por plan
+  AnswerTests: omnitest(correctVal='Muestreo estratificado por plan')
+  Hint: Piensa en el método que divide la población en grupos y selecciona de cada uno por separado. 
+  
+- Class: mult_question
+  Output: ¿Cuál de las siguientes es la mejor justificación para usar muestreo estratificado en este caso?
+  AnswerChoices: Porque garantiza que ambos grupos (Gratuito y Premium) queden representados según su proporción real en la población, evitando sesgos hacia el grupo mayoritario.;Porque es el método más rápido de programar en R.;Porque el muestreo estratificado siempre da resultados más precisos que cualquier otro método sin excepción.;Porque el plan Premium tiene usuarios más importantes que el plan Gratuito.
+  CorrectAnswer: Porque garantiza que ambos grupos (Gratuito y Premium) queden representados según su proporción real en la población, evitando sesgos hacia el grupo mayoritario.
+  AnswerTests: omnitest(correctVal='Porque garantiza que ambos grupos (Gratuito y Premium) queden representados según su proporción real en la población, evitando sesgos hacia el grupo mayoritario.')
+  Hint: La justificación correcta explica el problema específico que resuelve el método, no una ventaja genérica o exagerada.
+  
+- Class: text
+  Output: Para hacer un muestreo estratificado, dividimos la población en los estratos (grupos) según la variable de interés, en este caso, plan, y tomamos una muestra de cada estrato por separado, respetando su proporción real en la población. Como Gratuito es el 70% y Premium el 30%, si queremos una muestra total de 200 usuarios, tomaremos 140 de Gratuito y 60 de Premium. 
+  
+- Class: cmd_question
+  Output: Primero, filtra la población para quedarte solo con los usuarios del plan Gratuito, usando subset(). Guarda el resultado en una variable llamada estrato_gratuito. 
+  CorrectAnswer: estrato_gratuito <- subset(usuarios_app, plan == "Gratuito")
+  AnswerTests: omnitest(correctExpr='estrato_gratuito <- subset(usuarios_app, plan == "Gratuito")')
+  Hint: Usa subset() con usuarios_app como primer argumento y plan == "Gratuito" como condición. 
+  
+- Class: cmd_question
+  Output: Ahora toma una muestra de 140 registros de la columna satisfacción de ese estrato, usando sample(). Guárdala en una variable llamada muestra_gratuito. 
+  CorrectAnswer: muestra_gratuito <- sample(estrato_gratuito$satisfaccion, 140)
+  AnswerTests: omnitest(correctExpr='muestra_gratuito <- sample(estrato_gratuito$satisfaccion, 140)')
+  Hint: Usa sample() sobre estrato_gratuito$satisfaccion, con 140 como tamaño de muestra. 
+  
+- Class: cmd_question
+  Output: Repite lo mismo para el plan Premium. Filtra la población con subset() y guárdala en una variable llamada estrato_premium. 
+  CorrectAnswer: estrato_premium <- subset(usuarios_app, plan == "Premium")
+  AnswerTests: omnitest(correctExpr='estrato_premium <- subset(usuarios_app, plan == "Premium")')
+  Hint: Usa subset() con usuarios_app como primer argumento y plan == "Premium" como condición. 
+  
+- Class: cmd_question
+  Output: Ahora toma una muestra de 60 registros de satisfacción de ese estrato, y guárdala en una variable llamada muestra_premium.
+  CorrectAnswer: muestra_premium <- sample(estrato_premium$satisfaccion, 60)
+  AnswerTests: omnitest(correctExpr='muestra_premium <- sample(estrato_premium$satisfaccion, 60)')
+  Hint: Usa sample() sobre estrato_premium$satisfaccion, con 60 como tamaño de muestra. 
+  
+- Class: cmd_question
+  Output: Finalmente, une ambas muestras en una sola usando c(). Guarda el resultado en una variable llamada muestra_estratificada. 
+  CorrectAnswer: muestra_estratificada <- c(muestra_gratuito, muestra_premium)
+  AnswerTests: omnitest(correctExpr='muestra_estratificada <- c(muestra_gratuito, muestra_premium)')
+  Hint: Usa c() con ambas muestras como argumentos, para combinarlas en un solo vector. 
+- Class: cmd_question
+  Output: Escribe length(muestra_estratificada) para confirmar que tu muestra final tiene 200 registros en total. 
+  CorrectAnswer: length(muestra_estratificada)
+  AnswerTests: omnitest(correctExpr='length(muestra_estratificada)')
+  Hint: Usa la función length() sobre la variable muestra_estratificada. 
+  
+- Class: text
+  Output: Ya tenemos nuestra muestra estratificada de 200 usuarios. Ahora calculemos el estadístico que responde a la pregunta original de la empresa, el nivel de satisfacción general. 
+  
+- Class: cmd_question 
+  Output: Calcula la media de muestra_estratificada usando mean(), y guárdala en una variable llamada satisfaccion_estratificada. 
+  CorrectAnswer: satisfaccion_estratificada <- mean(muestra_estratificada)
+  AnswerTests: omnitest(correctExpr='satisfaccion_estratificada <- mean(muestra_estratificada)')
+  Hint: Usa mean() sobre la variable muestra_estratificada. 
+  
+- Class: cmd_question
+  Output: Escribe satisfaccion_estratificada para ver el valor obtenido. 
+  CorrectAnswer: satisfaccion_estratificada
+  AnswerTests: omnitest(correctExpr='satisfaccion_estratificada')
+  Hint: Solo escribe el nombre de la variable.
+  
+- Class: text
+  Output: Ese valor es tu estimación del nivel de satisfacción general de los usuarios de la app, calculada de forma que ambos tipos de plan quedaron representados según su proporción real en la población. 
+  
+- Class: text
+  Output: Como aprendiste en la lección anterior, una sola muestra no es suficiente para entender qué tan confiable es nuestra estimación. Repitamos el proceso completo de muestreo estratificado varias veces, para construir una distribución muestral de la satisfacción promedio. 
+  
+- Class: cmd_question
+  Output: Utiliza replicate() para repetir 150 veces el proceso completo de muestreo estratificado y cálculo de la media. Guarda el resultado en una variable llamada medias_estratificadas.
+  CorrectAnswer: medias_estratificadas <- replicate(150, mean(c(sample(estrato_gratuito$satisfaccion, 140), sample(estrato_premium$satisfaccion, 60))))
+  AnswerTests: omnitest(correctExpr='medias_estratificadas <- replicate(150, mean(c(sample(estrato_gratuito$satisfaccion, 140), sample(estrato_premium$satisfaccion, 60))))')
+  Hint: Dentro de replicate() repite exactamente el proceso de tomar ambas muestras, unirlas con c(), y calcular su media.
+  
+- Class: cmd_question
+  Output: Usa head() para ver los primeros valores de medias_estratificadas.
+  CorrectAnswer: head(medias_estratificadas)
+  AnswerTests: omnitest(correctExpr='head(medias_estratificadas)')
+  Hint: head() muestra por defecto los primeros 6 valores de un vector. 
+  
+- Class: text
+  Output: Ya tenemos 150 medias distintas, cada una calculada con un muestreo estratificado independiente. Ahora analicemos qué tan estable es esta distribución. 
+  
+- Class: cmd_question
+  Output: Calcula la desviación estándar de medias_estratificadas usando sd(), para ver qué tanto varían estas 150 medias entre sí. 
+  CorrectAnswer: sd(medias_estratificadas)
+  AnswerTests: omnitest(correctExpr='sd(medias_estratificadas)')
+  Hint: Usa la función sd() sobre el vector medias_estratificadas. 
+  
+- Class: cmd_question
+  Output: Calcula también el rango de estas medias, restando el valor mínimo al máximo. 
+  CorrectAnswer: max(medias_estratificadas) - min(medias_estratificadas)
+  AnswerTests: omnitest(correctExpr='max(medias_estratificadas) - min(medias_estratificadas)')
+  Hint: Usa max() y min() sobre medias_estratificadas, y réstalos. 
 
+- Class: mult_question
+  Output: La escala de satisfacción va de 1 a 10. Si el rango que obtuviste es un valor pequeño (por ejemplo, menor a 1 punto completo de la escala), ¿qué te dice esto sobre las 150 medias que calculaste?
+  AnswerChoices: Que las 150 medias estratificadas se mantienen muy cercanas entre sí dentro de la escala, reforzando que la estimación es estable.;Que la escala de satisfacción está mal diseñada.;Que el rango no tiene relación con la escala de satisfacción.;Que todas las medias fueron idénticas, sin ninguna variación. 
+  CorrectAnswer: Que las 150 medias estratificadas se mantienen muy cercanas entre sí dentro de la escala, reforzando que la estimación es estable.
+  AnswerTests: omnitest(correctVal='Que las 150 medias estratificadas se mantienen muy cercanas entre sí dentro de la escala, reforzando que la estimación es estable.')
+  Hint: Compara el tamaño del rango contra el ancho total de la escala (1 a 10, es decir, 9 puntos de amplitud).
+  
+- Class: mult_question
+  Output: Si la desviación estándar de medias_estratificadas resulta ser un valor pequeño (cercano a 0), ¿qué significa esto sobre la confiabilidad de tu estimación de satisfacción general?
+  AnswerChoices: Que la estimación es poco confiable, porque un valor pequeño indica error.;Que la estimación es bastante estable y confiable, porque las medias de las distintas muestras no varían mucho entre sí.;Que todos los usuarios tienen exactamente la misma satisfacción.;Que el muestreo estratificado no funcionó correctamente. 
+  CorrectAnswer: Que la estimación es bastante estable y confiable, porque las medias de las distintas muestras no varían mucho entre sí.
+  AnswerTests: omnitest(correctVal='Que la estimación es bastante estable y confiable, porque las medias de las distintas muestras no varían mucho entre sí.')
+  Hint: Una desviación estándar pequeña significa poca variabilidad entre los resultados. 
+  
+- Class: text
+  Output: Con esto completamos el análisis. Recapitulemos todo el proceso que seguiste en este problema, identificaste la población (usuarios_app), definiste qué información necesitabas (satisfacción general), elegiste y justificaste el muestreo estratificado por plan para evitar sesgos hacia el grupo mayoritario, obtuviste una muestra respetando esa proporción, calculaste la media de satisfacción, repetiste el proceso 150 veces para construir una distribución muestral, y analizaste su variabilidad para evaluar qué tan confiable es tu estimación. 
+  
+- Class: mult_question
+  Output: Para cerrar, reflexiona, si en vez de estratificar hubieras usado muestreo simple sin ningún cuidado, ¿qué riesgo real habrías corrido en este problema específico?
+  AnswerChoices: Ninguno, el resultado habría sido exactamente igual siempre.;Podrías haber obtenido una muestra con muy pocos usuarios Premium, sesgando la estimación hacia la opinión del grupo Gratuito.;El código en R habría sido más difícil de escribir.;La población habría cambiado de tamaño.
+  CorrectAnswer: Podrías haber obtenido una muestra con muy pocos usuarios Premium, sesgando la estimación hacia la opinión del grupo Gratuito.
+  AnswerTests: omnitest(correctVal='Podrías haber obtenido una muestra con muy pocos usuarios Premium, sesgando la estimación hacia la opinión del grupo Gratuito.')
+  Hint: Recuerda el motivo original por el que elegiste estratificado en vez de aleatorio simple. 
+  
+#===================================================
+# Cierre de la lección
+#===================================================
+
+- Class: text
+  Output: Con esto completas la actividad integradora y el curso completo de Muestreo. En este problema recorriste el proceso completo que sigue cualquier analista de datos en la vida real. 
+  
+- Class: text
+  Output: A lo largo de las 4 lecciones de este curso aprendiste los fundamentos del muestreo, los 5 métodos principales (muestreo aleatorio simple, sistemático, estratificado, conglomerados y conveniencia), y las 3 distribuciones muestrales más importantes (media, proporción y varianza). Estas herramientas son la base de cualquier análisis de datos, encuesta o proceso de toma de decisiones basado en información real. 
+  
+  
