@@ -392,6 +392,16 @@
   Hint: Piensa en qué se selecciona en cada método como individuos de todos los grupos o grupos completos.
   
 - Class: mult_question
+  Output: Una cadena de tiendas tiene sucursales en 30 ciudades distintas del país. Para evaluar la
+    satisfacción de los clientes, el investigador selecciona aleatoriamente 5 ciudades completas y
+    encuesta a todos los clientes que visitaron esas sucursales durante una semana. ¿Qué método de
+    muestreo se está utilizando?
+  AnswerChoices: Muestreo aleatorio simple;Muestreo estratificado;Muestreo por conglomerados;Muestreo por conveniencia
+  CorrectAnswer: Muestreo por conglomerados
+  AnswerTests: omnitest(correctVal='Muestreo por conglomerados')
+  Hint: Fíjate en que se seleccionaron ciudades completas al azar, no individuos sueltos ni grupos definidos por una característica compartida.
+  
+- Class: mult_question
   Output: Un investigador desea conocer los hábitos alimenticios de los estudiantes de una universidad. Para obtener los datos, encuesta únicamente 
     a los estudiantes que encuentra disponibles en la cafetería durante el horario del estudio. ¿Qué método está utilizando?
   AnswerChoices: Muestreo aleatorio simple;Muestreo sistemático;Muestreo estratificado;Muestreo por conveniencia
